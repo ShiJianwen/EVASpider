@@ -1,0 +1,1177 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="webkit" name="renderer"/>
+<meta content="15317273575564615446375" property="qc:admins"/>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+<meta content="LkzCRJ7rPEUwt6fVey2vhxiw1vQ" name="alexaVerifyID"/>
+<meta content="app-id=958101793, app-argument=" name="apple-itunes-app"/>
+<title>objective-c - 为什么说android系统没有IOS系统安全？ - SegmentFault</title>
+<meta content="APK可以直接安装，但为什么ADNROID不做成只能在渠道下载才能安装 ？（从而导致很多用户下载恶意的APK），而IOS的系统就必须在APPSTORE上安装，如果直接安装还得是开发者打包在手机上才能安装，其实我最终想问的是..." name="description"/>
+<meta content="android 安全 ios objective-c android-学习" name="keywords"/>
+<link href="/opensearch.xml" rel="search" title="SegmentFault" type="application/opensearchdescription+xml"/>
+<link href="http://static.segmentfault.com/v-56810165/global/img/favicon.ico" rel="shortcut icon"/>
+<link href="http://static.segmentfault.com/v-56810165/global/img/touch-icon.png" rel="apple-touch-icon"/>
+<meta content="#009a61" name="msapplication-TileColor"/>
+<meta content="http://static.segmentfault.com/v-56810165/global/img/touch-icon.png" name="msapplication-square150x150logo"/>
+<meta id="SFUserId" name="userId" value=""/>
+<meta id="SFUserRank" name="userRank" value=""/>
+<link href="/feeds/questions" rel="alternate" title="SegmentFault 最新问题" type="application/atom+xml"/>
+<link href="/feeds/blogs" rel="alternate" title="SegmentFault 最新文章" type="application/atom+xml"/>
+<link href="http://static.segmentfault.com/v-56810165/global/css/global.css" rel="stylesheet"/>
+<link href="http://static.segmentfault.com/v-56810165/qa/css/qa_all.css" rel="stylesheet"/>
+<link href="http://static.segmentfault.com/v-56810165/global/css/responsive.css" rel="stylesheet"/>
+<!--[if lt IE 9]>
+    <link rel="stylesheet" href="http://static.segmentfault.com/v-56810165/global/css/ie.css"/>
+    <script src="http://static.segmentfault.com/v-56810165/global/js/html5shiv.js"></script>
+    <script src="http://static.segmentfault.com/v-56810165/global/js/respond.js"></script>
+    <![endif]-->
+<script src="http://static.segmentfault.com/v-56810165/global/js/debug.js"></script>
+</head>
+<body class="qa-question">
+<!--[if lt IE 9]>
+<div class="alert alert-danger topframe" role="alert">你的浏览器实在<strong>太太太太太太旧了</strong>，放学别走，升级完浏览器再说 <a target="_blank"
+                                                                                                        class="alert-link"
+                                                                                                        href="http://browsehappy.com">立即升级</a>
+</div>
+<![endif]-->
+<div class="global-nav" xmlns="http://www.w3.org/1999/html">
+<nav class="container nav">
+<div class="dropdown m-menu">
+<a aria-expanded="false" aria-haspopup="true" class="visible-xs-block m-toptools" data-toggle="dropdown" href="javascript:void(0);" id="dLabel">
+<span class="glyphicon glyphicon-align-justify"></span>
+<span class="mobile-menu__unreadpoint"></span>
+</a>
+<ul aria-labelledby="dLabel" class="dropdown-menu" role="menu">
+<li class="mobile-menu__item"><a href="/questions/newest">问答</a></li>
+<li class="mobile-menu__item"><a href="/blogs">文章</a></li>
+<li class="mobile-menu__item"><a href="/notes">笔记</a></li>
+<li class="mobile-menu__item"><a href="/jobs">职位</a></li>
+<li class="mobile-menu__item"><a href="/events">活动</a></li>
+<li class="mobile-menu__item"><a href="/tags">标签</a></li>
+<li class="mobile-menu__item"><a href="/users">榜单</a></li>
+<li class="mobile-menu__item"><a href="/sites">子站</a></li>
+</ul>
+</div>
+<h1 class="logo"><a class="sf" href="/">SegmentFault</a></h1>
+<a class="visible-xs-block pull-right m-ask m-toptools" href="/user/login"><span class="glyphicon glyphicon-log-in"></span></a>
+<form action="/search" class="header-search pull-left hidden-sm hidden-xs">
+<button class="btn btn-link">
+<span class="sr-only">搜索</span>
+<span class="glyphicon glyphicon-search"></span>
+</button>
+<input class="form-control" id="searchBox" name="q" placeholder="输入关键字搜索" type="text" value=""/>
+</form>
+<ul class="menu list-inline pull-left hidden-xs">
+<li class="menu__item"><a href="/questions">问答</a></li>
+<li class="menu__item"><a href="/blogs">文章</a></li>
+<li class="menu__item"><a href="/notes">笔记</a></li>
+<li class="menu__item"><a href="/jobs">职位</a></li>
+<li class="menu__item dropdown hoverDropdown">
+<a class="more dropdownBtn" data-toggle="dropdown" href="/sites">
+                        ···<span class="sr-only">更多</span>
+</a>
+<ul class="dropdown-menu">
+<li><a href="/events">活动</a></li>
+<li><a href="/users">榜单</a></li>
+<li><a href="/tags">标签</a></li>
+<li><a href="/sites">子站</a></li>
+<li><a href="/app">移动 App</a></li>
+</ul>
+</li>
+</ul>
+<ul class="opts pull-right list-inline hidden-xs">
+<!-- <li class="opts__item">赶快加入吧 <a id="sfLogin" href="/user/login" class="SFLogin em ml10" onClick="_gaq.push(['_trackEvent', 'Button', 'Click', 'Login']);">立即登录</a></li> -->
+<li class="opts__item message has-unread">
+<a href="/tour" target="_blank">
+<span class="sr-only">消息</span>
+<span class="glyphicon glyphicon-envelope" id="messageCount"></span>
+</a>
+</li>
+<li class="opts__item">
+<a class="SFLogin em ml10" href="/user/login" onclick="_gaq.push(['_trackEvent', 'Button', 'Click', 'Login']);">注册 · 登录</a>
+</li>
+</ul>
+</nav>
+</div>
+<div class="wrap">
+<div class="post-topheader">
+<div class="container">
+<div class="row">
+<div class="col-md-9">
+<ol class="breadcrumb">
+<li><a href="/questions/newest">问答</a></li>
+<li class="active">问答详情</li>
+</ol>
+<h1 class="h3 title" data-id="1010000004176343" id="questionTitle"><a href="/q/1010000004176343">为什么说android系统没有IOS系统安全？</a></h1>
+<div class="author">
+<a class="mr5" href="/u/13sd"><img alt="我只是一个菜鸟" class="avatar-24 mr10" src="http://sfault-avatar.b0.upaiyun.com/626/123/62612321-553769c4e09b0_big64"/><strong>我只是一个菜鸟</strong></a>
+<strong class="text-black mr10">1.1k</strong>
+                        12月21日 提问
+                                                                    </div>
+</div>
+<div class="col-md-3">
+<ul class="widget-action--ver list-unstyled">
+<li>
+<button class="btn btn-success btn-sm" data-do="follow" data-id="1010000004176343" data-placement="right" data-toggle="tooltip" data-type="question" id="sideFollow" title="关注后将获得更新提醒" type="button">关注
+                                </button>
+<strong>10</strong> 关注
+                        </li>
+<li>
+<button class="btn btn-default btn-sm" data-id="1010000004176343" data-type="question" id="sideBookmark" type="button">收藏
+                                </button>
+<strong id="sideBookmarked">0</strong> 收藏，<strong class="no-stress">446</strong> 浏览
+                        </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- end .post-topheader -->
+<div class="container mt30">
+<div class="row">
+<div class="col-xs-12 col-md-9 main">
+<article class="widget-question__item">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1010000004176343" data-placement="top" data-toggle="tooltip" data-type="question" title="问题对人有帮助，内容完整，我也想知道答案" type="button">
+<span class="sr-only">问题对人有帮助，内容完整，我也想知道答案</span>
+</button>
+<span class="count">0</span>
+<button class="hate" data-do="hate" data-id="1010000004176343" data-placement="bottom" data-toggle="tooltip" data-type="question" title="问题没有实际价值，缺少关键内容，没有改进余地" type="button">
+<span class="sr-only">问题没有实际价值，缺少关键内容，没有改进余地</span>
+</button>
+</div>
+<!-- end .widget-vote -->
+</div>
+<div class="post-offset">
+<div class="question fmt">
+<p>APK可以直接安装，但为什么ADNROID不做成只能在渠道下载才能安装 ？（从而导致很多用户下载恶意的APK），而IOS的系统就必须在APPSTORE上安装，如果直接安装还得是开发者打包在手机上才能安装，其实我最终想问的是为什么ANROID不学苹果这样做呢，这样不就大大提高了安全性吗？</p>
+</div>
+<ul class="taglist--inline mb20">
+<li class="tagPopup"><a class="tag" data-id="1040000000089658" data-img="http://sfault-avatar.b0.upaiyun.com/752/833/752833330-1040000000089658_medium40" data-original-title="android" data-placement="top" data-toggle="popover" href="/t/android">android</a></li>
+<li class="tagPopup"><a class="tag" data-id="1040000000090533" data-img="http://sfault-avatar.b0.upaiyun.com/422/558/422558982-1040000000090533_medium40" data-original-title="安全" data-placement="top" data-toggle="popover" href="/t/%E5%AE%89%E5%85%A8">安全</a></li>
+<li class="tagPopup"><a class="tag" data-id="1040000000089442" data-img="http://sfault-avatar.b0.upaiyun.com/294/188/2941880015-1040000000089442_medium40" data-original-title="ios" data-placement="top" data-toggle="popover" href="/t/ios">ios</a></li>
+<li class="tagPopup"><a class="tag" data-id="1040000000090209" data-img="http://sfault-avatar.b0.upaiyun.com/224/006/2240063192-1040000000090209_medium40" data-original-title="objective-c" data-placement="top" data-toggle="popover" href="/t/objective-c">objective-c</a></li>
+<li class="tagPopup"><a class="tag" data-id="1040000000507055" data-img="" data-original-title="android-学习" data-placement="top" data-toggle="popover" href="/t/android-%E5%AD%A6%E4%B9%A0">android-学习</a></li>
+</ul>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004176343">链接</a></li>
+<li><a class="comments" data-id="1010000004176343" data-target="#comment-1010000004176343" href="javascript:void(0);">1
+                                            评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1010000004176343" id="comment-1010000004176343">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+<!-- end .post-offset -->
+</article>
+<div class="widget-answers">
+<div class="btn-group pull-right" role="group">
+<a class="btn btn-default btn-xs active" href="/q/1010000004176343#answers-title" id="sortby-rank">默认排序</a>
+<a class="btn btn-default btn-xs" href="?sort=created#answers-title" id="sortby-created">时间排序</a>
+</div>
+<h2 class="title h4 mt30 mb20 post-title" id="answers-title">10 个回答</h2>
+<article class="clearfix widget-answers__item" id="a-1020000004176550">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004176550" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">3</span>
+<button class="hate" data-do="hate" data-id="1020000004176550" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/universe_of_code">
+<img alt="" class="avatar-24" src="http://sfault-avatar.b0.upaiyun.com/305/423/3054230534-561d20a868d2e_big64"/>
+</a>
+<strong><a class="mr5" href="/u/universe_of_code">代码宇宙</a> 4.2k
+            </strong>
+<span class="ml10 text-muted">
+            12月21日 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>理念不同。Android永远不可能像IOS那样，倒是以后IOS也许会像Android一样的可能性更大一些（十几年后？）。</p>
+<p>根本原因是Android是开源的，它也不属于（或不完全属于）Google一家公司。而IOS则是苹果一家独大，拥有绝对的控制权。这一点可以参考Windows/Mac/Unix等闭源系统和Linux系统之间的关系。</p>
+<p>至于说Android和IOS哪个安全还真不能这么简单地比较。从表面上看Android比IOS的安全性要差一些，但这只是表面上，深入来看：</p>
+<ol>
+<li><p>由于是完全闭源的，如果IOS的系统中存在某个漏洞，那么这个漏洞将只有苹果和发现了这个漏洞的黑客知道。而Android由于是开源的，任何漏洞被提前发现与公开的几率要大很多。这一点可以参考Windows和Linux</p></li>
+<li><p>抛开漏洞问题，实际上Android系统的安全性也是很高的，否则它就不可能成为一个如此流行的操作系统！Android会对敏感操作设置权限，比如访问通讯录、收发短信、拨打电话、访问网络等，安装的时候只要注意一下，对来源不可信的应用保持警惕，就能避免绝大部分安全隐患</p></li>
+<li><p>再来说说Android市场和苹果Store。虽然理论上，任何人都能够开一个Android市场，但实际上真正占据了99%份额的也就那么几家，国外的有安卓市场、谷歌Market，国内的有豌豆荚、百度等，各大Android市场为了保持竞争力，同样会对应用进行检查，不可能允许未经过审核的应用上架。所以这一点上来说安全性并不比苹果Store差。</p></li>
+</ol>
+<p>但是另一方面，考虑极端情况，假如有一天Google或苹果倒闭了，谷歌Market关门了，Android还会存在吗？当然会！但是万一苹果倒闭了，AppStore关门了呢？虽然这种可能性很小，但万事无绝对是不是。</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004176343/a-1020000004176550">链接</a></li>
+<li><a class="comments" data-id="1020000004176550" data-target="#comment-1020000004176550" href="javascript:void(0);">1
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004176550" id="comment-1020000004176550">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004176478">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004176478" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">2</span>
+<button class="hate" data-do="hate" data-id="1020000004176478" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/isteven">
+<img alt="" class="avatar-24" src="http://sfault-avatar.b0.upaiyun.com/777/070/777070369-557e96234fd90_big64"/>
+</a>
+<strong><a class="mr5" href="/u/isteven">isteven</a> 2k
+            </strong>
+<span class="ml10 text-muted">
+            12月21日 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>Android因为它本身开源的特性，做不了安装渠道的限制。而且，假设做了这个限制对国内的用户来说并不是什么好事，国内根本就访问不了GooglePlay。</p>
+<p>不管iOS还是Android，只要如果开放了敏感的系统权限（Root、越狱），手机就回变得很不安全。</p>
+<p>如果Android使用原生系统，并且不Root，使用起来基本上不用担心安全问题。<br/>Android其实本身的设计是安全的。因为Root（相当于iPhone越狱），还有不同厂商对系统的定制，才导致今天这种局面。</p>
+<p>其实近年会偶尔听到iOS安全问题，几乎都会有一个大前提：已经越狱的iPhone。</p>
+<p>Android因为源码是开放的，黑客获取到敏感权限的成本更低，而iOS是一个黑盒，破解成本更高罢了。</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004176343/a-1020000004176478">链接</a></li>
+<li><a class="comments" data-id="1020000004176478" data-target="#comment-1020000004176478" href="javascript:void(0);">2
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004176478" id="comment-1020000004176478">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004176495">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004176495" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">1</span>
+<button class="hate" data-do="hate" data-id="1020000004176495" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/jiny_and_me">
+<img alt="" class="avatar-24" src="http://static.segmentfault.com/v-56810165/global/img/user-64.png"/>
+</a>
+<strong><a class="mr5" href="/u/jiny_and_me">jiny_and_me</a> 168
+            </strong>
+<span class="ml10 text-muted">
+            12月21日 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>安全是多方面的，不是某一个技术或者逻辑就可以完成。</p>
+<p>一般认为安卓没有iOS安全是因为<br/>1.沙盒机制（楼上已经答过）；<br/>2.完整封闭的app审核分发流程；<br/>3.苹果更乐于采用更加安全的加密技术（比如强制app采用https证书，弃Flash采用html5等）。</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004176343/a-1020000004176495">链接</a></li>
+<li><a class="comments" data-id="1020000004176495" data-target="#comment-1020000004176495" href="javascript:void(0);">
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004176495" id="comment-1020000004176495">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004176614">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004176614" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">1</span>
+<button class="hate" data-do="hate" data-id="1020000004176614" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/hust">
+<img alt="" class="avatar-24" src="http://sfault-avatar.b0.upaiyun.com/425/503/4255035635-5638a58a18b50_big64"/>
+</a>
+<strong><a class="mr5" href="/u/hust">aTool_org</a> 232
+            </strong>
+<span class="ml10 text-muted">
+            12月21日 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>因为iOS上线的时候，苹果不允许使用私有api，什么叫私有api，例如获取联系人，获取短信电话等等核心信息和权限。所以iOS比android会安全很多。</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004176343/a-1020000004176614">链接</a></li>
+<li><a class="comments" data-id="1020000004176614" data-target="#comment-1020000004176614" href="javascript:void(0);">
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004176614" id="comment-1020000004176614">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004198633">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004198633" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">1</span>
+<button class="hate" data-do="hate" data-id="1020000004198633" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/akioss">
+<img alt="" class="avatar-24" src="http://sfault-avatar.b0.upaiyun.com/169/173/1691736389-559f5fcb4c302_big64"/>
+</a>
+<strong><a class="mr5" href="/u/akioss">Akioss</a> 394
+            </strong>
+<span class="ml10 text-muted">
+            5 天前 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>前面诸位大都是从用户角度说的安全问题，其实但从系统内部讲，android的安全性并不低，这得益于selinux，两个应用之间的页面可以随意跳转(比如各种分享，支付)，这是自1.0版本就存在的，而不比担心某个进程会影响另一个进程的操作。</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004176343/a-1020000004198633">链接</a></li>
+<li><a class="comments" data-id="1020000004198633" data-target="#comment-1020000004198633" href="javascript:void(0);">
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004198633" id="comment-1020000004198633">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004221683">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004221683" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">1</span>
+<button class="hate" data-do="hate" data-id="1020000004221683" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/tobyforever">
+<img alt="" class="avatar-24" src="http://static.segmentfault.com/v-56810165/global/img/user-64.png"/>
+</a>
+<strong><a class="mr5" href="/u/tobyforever">tobyforever</a> 17
+            </strong>
+<span class="ml10 text-muted">
+            1 天前 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>其实国内很多安卓厂商都在rom里埋了后门。水很深</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004176343/a-1020000004221683">链接</a></li>
+<li><a class="comments" data-id="1020000004221683" data-target="#comment-1020000004221683" href="javascript:void(0);">
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004221683" id="comment-1020000004221683">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004176362">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004176362" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">0</span>
+<button class="hate" data-do="hate" data-id="1020000004176362" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/lino">
+<img alt="" class="avatar-24" src="http://static.segmentfault.com/v-56810165/global/img/user-64.png"/>
+</a>
+<strong><a class="mr5" href="/u/lino">lino</a> 25
+            </strong>
+<span class="ml10 text-muted">
+            12月21日 回答
+                            · <a href="/q/1010000004176343/a-1020000004176362/revision">12月21日 更新</a>
+</span>
+<div class="answer fmt mt10">
+<p>简单的答案， Android 的 app 默认的运行环境没有沙箱 (sandboxing) iOS 有。</p>
+<p>关于什么是沙箱，可参见百科。</p>
+<p>Android 为什么不能学 iOS 是因为 Android 的底层系统 Linux 最近才开始发展出比较完整可用的沙箱环境和相关的库（虽然所依赖的内核技术如 cgruop 等等很早就有了），叫做 Docker，要移植到 Android 上可能仍需时日。</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004176343/a-1020000004176362">链接</a></li>
+<li><a class="comments" data-id="1020000004176362" data-target="#comment-1020000004176362" href="javascript:void(0);">2
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004176362" id="comment-1020000004176362">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004216940">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004216940" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">0</span>
+<button class="hate" data-do="hate" data-id="1020000004216940" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/kera">
+<img alt="" class="avatar-24" src="http://sfault-avatar.b0.upaiyun.com/125/600/1256008229-5681dbec7bd07_big64"/>
+</a>
+<strong><a class="mr5" href="/u/kera">浅挚绊离汐kera</a> 42
+            </strong>
+<span class="ml10 text-muted">
+            2 天前 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>安卓基本上都有代码混淆..ios基本不会去代码混淆吧...</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004176343/a-1020000004216940">链接</a></li>
+<li><a class="comments" data-id="1020000004216940" data-target="#comment-1020000004216940" href="javascript:void(0);">2
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004216940" id="comment-1020000004216940">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004225813">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004225813" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">0</span>
+<button class="hate" data-do="hate" data-id="1020000004225813" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/moven_j">
+<img alt="" class="avatar-24" src="http://sfault-avatar.b0.upaiyun.com/184/147/1841473096-567a07b15a557_big64"/>
+</a>
+<strong><a class="mr5" href="/u/moven_j">moven_j</a> 5
+            </strong>
+<span class="ml10 text-muted">
+            18 小时前 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>正如前面诸位所说，Android最大的成功其实就是它的开放性，这也是谷歌的理念，况且单纯的限制安装渠道并不能从根本上提高Android的安全性。<br/>关于Apk的安装<br/>1.用户主动下载，Android的现在的安装渠道虽然多，但并不缺乏知名的高质量的平台，google paly以及国内一些知名的应用市场都会对上架的app进行审核，从用户习惯上来说，获取恶意APP的几率被降低了。<br/>2.用户无意中下载，如果APK是非静默安装，那么系统一定有提示，且各大手机厂商都有预置的安全管理应用，用户可以在得到提示后取消安装；如果APK想要静默安装，那么它必须是使用platformkey进行签名的，且不说各大手机厂商的platformkey各不相同，想获取一个小厂商的key也不太可能吧。获取原始android系统的platformkey相对容易，但现在已经没什么手机直接使用原始的android系统了吧。</p>
+<p>现在主流手机厂商都会对Android系统进行深度定制，提供了app的安装及权限管理。比如应用访问短信等隐私内容的权限授权，原生Android在M版本也就是6.0上才在“设置”里提供了关闭app每项权限的用户入口，而一些手机厂商的“手机管家”类应用在这之前就已经提供了这项功能。Android的开源让Android的手机产品更多，而安全性必然会成为厂商之间争夺的热点特性，360现在不是也来了么，个人觉得，Android的安全性未来会比肩IOS。</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004176343/a-1020000004225813">链接</a></li>
+<li><a class="comments" data-id="1020000004225813" data-target="#comment-1020000004225813" href="javascript:void(0);">
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004225813" id="comment-1020000004225813">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004227691">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004227691" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">0</span>
+<button class="hate" data-do="hate" data-id="1020000004227691" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/wangwox">
+<img alt="" class="avatar-24" src="http://static.segmentfault.com/v-56810165/global/img/user-64.png"/>
+</a>
+<strong><a class="mr5" href="/u/wangwox">wangwox</a> 12
+            </strong>
+<span class="ml10 text-muted">
+            15 小时前 回答
+                            · <a href="/q/1010000004176343/a-1020000004227691/revision">14 小时前 更新</a>
+</span>
+<div class="answer fmt mt10">
+<blockquote><p>有心无力而已</p></blockquote>
+<ul>
+<li><p>android虽说是谷歌推出来的,但是因为当时的局势,所以融合了除苹果外的所有业内厂商的齐心协力,终于把这事弄成了.所以从现在android的火爆而言,其它厂商也是出了极大的力气的.谷歌若是不能给点甜头,必然是不会这么卖命的.</p></li>
+<li><p>自古驱虎吞狼,必然养虎为患.说实话,现在虽说android以谷歌为核心,但是谷歌的说话力度,如果涉及到利益层面,其它厂商根本不听它的.想管也管不了.最严重的情况,就是现在安卓的碎片化极其严重,到什么程度,今年8月份,达到了68万个机型.各个厂商年年月月推新机型,再配套各个厂商基于古老android系统改的自己的android系统...</p></li>
+<li><p>国内的环境大家也知道,查个资料也得翻墙,再加上登不上谷歌市场,各个应用市场各玩各的...</p></li>
+</ul>
+<blockquote><p>至于技术层面,很难讲IOS就一定比android安全</p></blockquote>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004176343/a-1020000004227691">链接</a></li>
+<li><a class="comments" data-id="1020000004227691" data-target="#comment-1020000004227691" href="javascript:void(0);">
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004227691" id="comment-1020000004227691">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<div class="text-center">
+</div>
+</div><!-- /.widget-answers -->
+<h4>撰写答案</h4>
+<input id="draftId" type="hidden" value=""/>
+<input id="questionId" type="hidden" value="1010000004176343"/>
+<form action="/question/1010000004176343/answers/add" class="editor-wrap" method="post">
+<div class="editor" id="questionText">
+<textarea class="form-control" id="answerEditor" name="text" placeholder="撰写答案..." rows="4"></textarea>
+</div>
+<div class="hide mt15 clearfix" id="answerSubmit">
+<div class="checkbox pull-left">
+<label><input class="" id="shareToWeibo" type="checkbox"/>
+                            同步到新浪微博</label>
+</div>
+<div class="pull-right">
+<span class="hidden text-muted" id="editorStatus">
+</span>
+<a class="mr10 hidden" href="javascript:void(0);" id="dropIt">
+                            [舍弃]
+                        </a>
+<button class="btn btn-lg btn-primary ml20" data-id="1010000004176343" id="answerIt" type="submit">提交回答
+                        </button>
+</div>
+</div>
+</form>
+</div>
+<!-- /.main -->
+<div class="col-xs-12 col-md-3 side">
+<div class="sfad-sidebar">
+<div class="sfad-item" data-adn="ad-981179" id="adid-981179">
+<button aria-hidden="true" class="close" type="button">×</button>
+</div>
+</div>
+<div class="widget-box no-border">
+<h2 class="h4 widget-box__title">相似问题</h2>
+<ul class="widget-links list-unstyled">
+<li class="widget-links__item"><a href="/q/1010000004072705" title="iOS 和 Android 应用内部集成分享按钮的问题">iOS 和 Android 应用内部集成分享按钮的问题</a>
+<small class="text-muted">
+                                                    3 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000000094584" title="根据API编写Android、iOS的SDK有无相应的标准、模板、准则、约定？">根据API编写Android、iOS的SDK有无相应的标准、模板、准则、约定？</a>
+<small class="text-muted">
+                                                    2 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000002908637" title="能不能推荐一些用户体验做的比较好的iOS/Android应用？">能不能推荐一些用户体验做的比较好的iOS/Android应用？</a>
+<small class="text-muted">
+                                                    8 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000001646061" title="Android新手，学习Android从哪开始">Android新手，学习Android从哪开始</a>
+<small class="text-muted">
+                                                    11 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000003828921" title="如何自学iOS开发">如何自学iOS开发</a>
+<small class="text-muted">
+                                                    7 回答
+                                                                             |                             已解决
+                                            </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000002388878" title="如何在github上找到好的android项目源码学习">如何在github上找到好的android项目源码学习</a>
+<small class="text-muted">
+                                                    4 回答
+                                                                             |                             已解决
+                                            </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000002229523" title="请问有哪些有助于学习的Android工程？">请问有哪些有助于学习的Android工程？</a>
+<small class="text-muted">
+                                                    1 回答
+                                                                             |                             已解决
+                                            </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000002895288" title="求推荐学习android开发的网站">求推荐学习android开发的网站</a>
+<small class="text-muted">
+                                                    8 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000002763465" title="js怎么跟Android和ios进行交互呢？">js怎么跟Android和ios进行交互呢？</a>
+<small class="text-muted">
+                                                    1 回答
+                                                                             |                             已解决
+                                            </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000000095465" title="像miui那样对android进行深度优化要学习那些技术呢？">像miui那样对android进行深度优化要学习那些技术呢？</a>
+<small class="text-muted">
+                                                    2 回答
+                                                                    </small>
+</li>
+</ul>
+</div>
+<div class="widget-share__full" data-shorturl="http://sfau.lt/bNrGCx" data-text="为什么说android系统没有IOS系统安全？" data-url="http://segmentfault.com/q/1010000004176343"></div>
+</div><!-- /.side -->
+</div>
+</div>
+</div>
+<div class="modal" id="shareToWeiboModal">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" data-dismiss="modal" type="button">
+<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+</button>
+<h4 class="modal-title">分享</h4>
+</div>
+<div class="modal-body">
+<p class="sfModal-content">
+                    分享到微博？
+                </p>
+</div>
+<div class="modal-footer ">
+<button class="btn btn-default dont-likeweibo" data-dismiss="modal" type="button">取消并且不再弹出</button>
+<a class="btn btn-primary done-btn" href="" id="shareLink" onclick="$('#shareToWeiboModal').modal('hide')" target="_blank">分享</a>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden widget-register widget-welcome-question mt20 hidden-xs widget-welcome widget-register-slideUp">
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<h2 class="title h4">与我们一起探索更多的未知</h2>
+<p>专业的开发者技术社区，为用户提供多样化的线上知识交流，丰富的线下活动及给力的工作机会</p>
+</div>
+<form action="/api/user/register/fast" method="post">
+<div class="col-sm-5">
+<div class="form-group mb0">
+<input class="form-control" name="mail" placeholder="邮箱地址" required="" type="text"/>
+</div>
+</div>
+<div class="col-sm-3">
+<button class="btn btn-primary btn-block" type="submit">加入只需一步</button>
+</div>
+<div class="col-sm-10 mt10 captcha-part" style="display:none;">
+<div class="row">
+<div class="col-sm-4 pr0">
+<input class="form-control" disabled="" name="captcha" placeholder="请输入验证码" required="" type="text"/>
+</div>
+<div class="col-sm-4 pr0">
+<a href="javascript:void(0)"><img height="35" src=""/></a>
+</div>
+</div>
+</div>
+</form>
+<a class="close" href="javascript:void(0);"><span>×</span></a>
+</div>
+</div>
+</div>
+<div class="modal widget-911" id="delete-modal">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+<h4 class="modal-title radio-del question-close-only">关闭<span class="type-911">问题</span>（请谨慎操作）</h4>
+<h4 class="modal-title radio-del question-delete-only">删除<span class="type-911">问题</span>（请谨慎操作）</h4>
+<h4 class="modal-title radio-del answer-delete-only">删除<span class="type-911">回答</span>（请谨慎操作）</h4>
+<h4 class="modal-title radio-del answer-ignore-only">忽略<span class="type-911">回答</span></h4>
+</div>
+<div class="modal-body">
+<p>
+<strong class="required radio-del question-close-only">关闭理由：</strong>
+<strong class="required radio-del question-delete-only answer-delete-only">删除理由：</strong>
+<strong class="required radio-del answer-ignore-only">忽略理由：</strong>
+</p>
+<div id="reportDescription">
+<div class="radio-del radio all">
+<label>
+<input name="descRadio" type="radio" value="推广（招聘、广告、SEO 等）方面的内容"/>
+                            推广（招聘、广告、SEO 等）方面的内容
+                        </label>
+</div>
+<div class="radio-del radio question-close-only">
+<label>
+<input name="descRadio" type="radio" value="与已有问题重复"/>
+                            与已有问题重复（请编辑该提问指向已有相同问题）
+                        </label>
+</div>
+<div class="radio-del radio answer-ignore-only">
+<label>
+<input name="descRadio" type="radio" value="答非所问，不符合答题要求"/>
+                            答非所问，不符合答题要求
+                        </label>
+</div>
+<div class="radio-del radio answer-ignore-only">
+<label>
+<input name="descRadio" type="radio" value="宜作评论而非答案"/>
+                            宜作评论而非答案
+                        </label>
+</div>
+<div class="radio-del radio all">
+<label>
+<input name="descRadio" type="radio" value="带有人身攻击、辱骂、仇恨等违反条款的内容"/>
+                            带有人身攻击、辱骂、仇恨等违反条款的内容
+                        </label>
+</div>
+<div class="radio-del radio question-close-only">
+<label>
+<input name="descRadio" type="radio" value="无法获得确切结果的问题"/>
+                            无法获得确切结果的问题
+                        </label>
+</div>
+<div class="radio-del radio question-close-only">
+<label>
+<input name="descRadio" type="radio" value="非开发直接相关的问题"/>
+                            非开发直接相关的问题
+                        </label>
+</div>
+<div class="radio-del radio question-close-only question-delete-only">
+<label>
+<input name="descRadio" type="radio" value="非技术提问的讨论型问题"/>
+                            非技术提问的讨论型问题
+                        </label>
+</div>
+<div class="radio-del radio all btwRadio">
+<label>
+<input name="descRadio" type="radio" value=""/>
+                            其他原因（请补充说明）
+                        </label>
+</div>
+<div class="btw" style="display:none;">
+<p class="mt20"><strong>补充说明：</strong></p>
+<textarea class="form-control" id="deleteDesc" name="description" rows="3"></textarea>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-default" data-dismiss="modal" type="button">取消</button>
+<button class="btn btn-danger" id="submit-delete" type="button">提交</button>
+</div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="modal widget-911" id="911">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" data-dismiss="modal" type="button">
+<span aria-hidden="true">×</span>
+<span class="sr-only">Close</span>
+</button>
+<h4 class="modal-title">举报<span data-model="type"></span></h4>
+</div>
+<div class="modal-body">
+<form id="reportForm">
+<!-- 后台返回信息 -->
+<p class="alert alert-warning" data-model="returnMsg"></p>
+<div data-role="base">
+<p>
+<strong class="required">我要举报该<span data-model="type"></span>，理由是：</strong>
+</p>
+<ul class="list-unstyled" data-model="list"></ul>
+</div>
+</form>
+</div>
+<div class="modal-footer">
+<button class="btn btn-default pull-left" data-role="back" style="display:none" type="button">返回重选</button>
+<button class="btn btn-default" data-dismiss="modal" type="button">取消</button>
+<button class="btn btn-primary" data-role="submit" type="button">提交</button>
+</div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<footer id="footer">
+<div class="container">
+<div class="row hidden-xs">
+<dl class="col-sm-2 site-link">
+<dt>网站相关</dt>
+<dd><a href="/about">关于我们</a></dd>
+<dd><a href="/tos">服务条款</a></dd>
+<dd><a href="/faq">帮助中心</a></dd>
+<dd><a href="/repu">声望与权限</a></dd>
+<dd><a href="/markdown">编辑器语法</a></dd>
+<dd><a href="//weekly.segmentfault.com/">每周精选</a></dd>
+<dd><a href="/app">App 下载</a></dd>
+</dl>
+<dl class="col-sm-2 site-link">
+<dt>联系合作</dt>
+<dd><a href="/contact">联系我们</a></dd>
+<dd><a href="/hiring">加入我们</a></dd>
+<dd><a href="/link">合作伙伴</a></dd>
+<dd><a href="/press">媒体报道</a></dd>
+<dd><a href="/0x">建议反馈</a></dd>
+<dd><a href="http://pan.baidu.com/share/link?shareid=604288&amp;uk=839272106" target="_blank">Logo 下载</a>
+</dd>
+</dl>
+<dl class="col-sm-2 site-link">
+<dt>常用链接</dt>
+<dd><a href="https://chrome.google.com/webstore/detail/segmentfault-%E7%AC%94%E8%AE%B0/pjklfdmleagfaekibdccmhlhellefcfo" target="_blank">笔记插件: Chrome</a></dd>
+<dd><a href="https://addons.mozilla.org/zh-CN/firefox/addon/sf-note-ext/" target="_blank">笔记插件: Firefox</a></dd>
+<dd><a href="//mirrors.segmentfault.com/" target="_blank">文档镜像</a></dd>
+<dd>订阅：<a href="/feeds">问答</a> / <a href="/feeds/blogs">文章</a></dd>
+<dd><a href="/hackathon">黑客马拉松</a></dd>
+<dd><a href="/giveaways" target="_blank">开发者福利</a></dd>
+<!--             <dd><a href="http://zs.segmentfault.com/" target="_blank">一起涨姿势</a></dd> -->
+<dd><a href="https://namebeta.com/" target="_blank">域名搜索注册</a></dd>
+</dl>
+<dl class="col-sm-2 site-link">
+<dt>关注我们</dt>
+<dd><a href="https://github.com/SegmentFault" target="_blank">GitHub</a></dd>
+<dd><a href="https://twitter.com/segment_fault" target="_blank">Twitter</a></dd>
+<!-- <dd><a href="http://page.renren.com/699146294" target="_blank">人人网</a></dd> -->
+<dd><a href="https://www.linkedin.com/company/segmentfault" target="_blank">LinkedIn</a></dd>
+<dd><a href="http://weibo.com/segmentfault" target="_blank">新浪微博</a></dd>
+<dd><a href="http://i.youku.com/segmentfault" target="_blank">优酷主页</a></dd>
+<dd><a href="/blog/segmentfault" target="_blank">开发日志</a></dd>
+</dl>
+<dl class="col-sm-4 site-link" id="license">
+<dt>内容许可</dt>
+<dd>除特别说明外，用户内容均采用 <a href="http://creativecommons.org/licenses/by-sa/3.0/cn/" rel="license" target="_blank">知识共享署名-相同方式共享 3.0
+                        中国大陆许可协议</a> 进行许可
+                </dd>
+<dd>本站由 <a href="http://qingcloud.com/" target="_blank">青云 QingCloud</a> 提供云计算服务<br/><a href="https://www.upyun.com/?utm_source=segmentfault&amp;utm_medium=link&amp;utm_campaign=upyun&amp;md=segmentfault" target="_blank">又拍云</a>
+                    提供 CDN 存储服务
+                </dd>
+<dd>
+<a href="http://www.anquan.org" key="55e59bd4efbfb0241247d4e4" logo_size="124x47" logo_type="realname">
+<script src="//static.anquan.org/static/outer/js/aq_auth.js"></script>
+</a>
+<!-- Begin DigiCert site seal HTML and JavaScript -->
+<div data-language="en" id="DigiCertClickID_2bMgZTfe" style="float: left; margin-right: 10px"></div>
+<script type="text/javascript">
+                        var __dcid = __dcid || [];
+                        __dcid.push(["DigiCertClickID_2bMgZTfe", "3", "s", "black", "2bMgZTfe"]);
+                        (function () {
+                            var cid   = document.createElement("script");
+                            cid.async = true;
+                            cid.src   = "//seal.digicert.com/seals/cascade/seal.min.js";
+                            var s     = document.getElementsByTagName("script");
+                            var ls    = s[(s.length - 1)];
+                            ls.parentNode.insertBefore(cid, ls.nextSibling);
+                        }());
+                    </script>
+<!-- End DigiCert site seal HTML and JavaScript -->
+</dd>
+</dl>
+</div>
+<div class="copyright">
+            Copyright © 2011-2015 SegmentFault. 当前呈现版本 15.12.09<br/><a href="http://www.miibeian.gov.cn/" rel="nofollow">浙ICP备15005796号-2</a>
+</div>
+<p class="text-center">
+<a class="js__view--selector hidden-sm hidden-md hidden-lg" data-action="mobile" href="javascript:;">移动版</a>
+<a class="js__view--selector hidden-sm hidden-md hidden-lg" data-action="desktop" href="javascript:;">桌面版</a>
+</p>
+</div>
+</footer>
+<div class="hidden-xs hidden-sm" id="fixedTools">
+<a class="hidden border-bottom" href="#" id="backtop">回顶部</a>
+<div class="qrcodeWraper">
+<a href="/app#qrcode"><span class="glyphicon glyphicon-qrcode"></span></a>
+<img alt="sf-wechat" class="border" id="qrcode" src="http://static.segmentfault.com/v-56810165/page/img/app/appQrcode.png"/>
+<p class="qrcode-text">扫扫下载 App</p>
+</div>
+</div>
+<div class="app-promotion-bar">
+<a href="javascript:;"><i class="fa fa-close close"></i></a>
+<div class="icon"></div>
+<h5 class="title h5">SegmentFault</h5>
+<p class="describe">一起探索更多未知</p>
+<a class="download-btn btn btn-sm btn-primary" href="/app#qrcode">下载 App</a>
+</div>
+<script id="loginModal" type="text/template">
+<div class="row bg-white login-modal">
+    <div class="col-md-4 col-sm-12 col-md-push-7 login-wrap">
+        <h1 class="h4 text-muted login-title">用户登录</h1>
+        <form action="/api/user/login" method="POST" role="form" class="mt30">
+            <div class="form-group">
+                <label class="control-label">Email</label>
+                <input type="email" class="form-control" name="mail" required placeholder="hello@segmentfault.com">
+            </div>
+            <div class="form-group">
+                <label class="control-label">密码</label>
+                <input type="password" class="form-control" name="password" required placeholder="密码">
+            </div>
+            <div class="form-group clearfix">
+                <div class="checkbox pull-left">
+                    <label><input name="remember" type="checkbox" value="1" checked> 记住登录状态</label>
+                </div>
+                <button type="submit" class="btn btn-primary pull-right pl20 pr20">登录</button>
+            </div>
+        </form>
+        <p class="h4 text-muted visible-xs-block h4">快速登录</p>
+        <div class="widget-login mt30">
+            <p class="text-muted mt5 mr10 pull-left hidden-xs">快速登录</p>
+            <a href="/user/oauth/google" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-google"><span class="icon-sn-google"></span> <strong class="visible-xs-inline">Google 账号</strong></a>
+            <a href="/user/oauth/github" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-github"><span class="icon-sn-github"></span> <strong class="visible-xs-inline">Github 账号</strong></a>
+            <a href="/user/oauth/weibo" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-weibo"><span class="icon-sn-weibo"></span> <strong class="visible-xs-inline">新浪微博账号</strong></a>
+            <a href="/user/oauth/qq" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-qq"><span class="icon-sn-qq"></span> <strong class="visible-xs-inline">QQ 账号</strong></a>
+            <a href="/user/oauth/weixin" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-wechat"><span class="icon-sn-wechat"></span> <strong class="visible-xs-inline">微信账号</strong></a>
+            <button type="button" class="btn mb5 btn-default btn-sm btn-sn-more" id="loginShowMore">...</button>
+            <a href="/user/oauth/twitter" class="btn pl5 pr5 mb5 btn-default btn-sn-twitter btn-sm hidden"><span class="icon-sn-twitter"></span> <strong class="visible-xs-inline">Twitter 账号</strong></a>
+            <a href="/user/oauth/facebook" class="btn pl5 pr5 mb5 btn-default btn-sn-facebook btn-sm hidden"><span class="icon-sn-facebook"></span> <strong class="visible-xs-inline">Facebook 账号</strong></a>
+            <a href="/user/oauth/douban" class="btn pl5 pr5 mb5 btn-default btn-sn-douban btn-sm hidden"><span class="icon-sn-douban"></span> <strong class="visible-xs-inline">豆瓣账号</strong></a>
+        </div>
+    </div>
+    <div class="login-vline hidden-xs hidden-sm"></div>
+    <div class="col-md-4 col-md-pull-3 col-sm-12 login-wrap">
+        <h1 class="h4 text-muted login-title">创建新账号</h1>
+        <form action="/api/user/register" method="POST" role="form" class="mt30">
+            <div class="form-group">
+                <label for="name" class="control-label">用户名</label>
+                <input type="text" class="form-control" name="name" required placeholder="字母、数字等，用户名唯一">
+            </div>
+            <div class="form-group">
+                <label for="mail" class="control-label">Email</label>
+                <input type="hidden" style="display:none" name="mail">
+                <input type="email" autocomplete="off" class="form-control register-mail" name="mail" required placeholder="hello@segmentfault.com">
+            </div>
+            <div class="form-group">
+                <label for="password" class="control-label">密码</label>
+                <input type="password" class="form-control" name="password" required placeholder="不少于 6 位">
+            </div>
+            <div class="form-group" style="display:none;">
+                <label class="required control-label">验证码</label>
+                <input type="text" class="form-control" id="captcha" name="captcha" placeholder="请输入下方的验证码">
+                <div class="mt10"><a id="loginReloadCaptcha"  href="javascript:void(0)"><img data-src="/user/captcha?w=240&h=50" class="captcha" width="240" height="50" /></a></div>
+            </div>
+            <div class="form-group clearfix">
+                <div class="checkbox pull-left">
+                    同意并接受<a href="/tos" target="_blank">《服务条款》</a>
+                </div>
+                <button type="submit" class="btn btn-primary pl20 pr20 pull-right">注册</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="text-center text-muted mt30">
+    <a href="/user/forgot" class="ml5">找回密码</a>
+</div>
+</script>
+<script>
+    (function (w) {
+        w.SF = {
+            staticUrl: "http://static.segmentfault.com/v-56810165"
+        };
+        w.SF.token = (function () {
+    var _15QYg4 = '69'//'f1r'
++'5b'//'O6e'
++//'zlR'
+'zlR'+'e4b'//'YbF'
++//'gJ'
+'824'+//'I'
+'e8a'+//'dFT'
+'9c2'+'f'//'5PN'
++'7b6'//'DI'
++//'o0'
+'7'+//'5Q'
+'5Q'+//'WZN'
+'fcd'+'1'//'HW'
++'2'//'YY'
++//'1'
+'1'+/* 'Ed'//'Ed' */''+'321'//'oX'
++'dQ'//'dQ'
++/* 'knA'//'knA' */''+/* 'lGY'//'lGY' */''+//'P'
+'P'+//'q'
+'31'+//'6C'
+'8', _T6CP = [[4,7],[21,23],[26,27],[29,31],[29,30]];
+
+    for (var i = 0; i < _T6CP.length; i ++) {
+        _15QYg4 = _15QYg4.substring(0, _T6CP[i][0]) + _15QYg4.substring(_T6CP[i][1]);
+    }
+
+    return _15QYg4;
+})();;
+    })(window);
+
+                var lock = {
+        type : "",
+        text : '',
+        table: {"ban_post":[1,"\u4f60\u5df2\u7ecf\u88ab\u7981\u8a00, \u65e0\u6cd5\u8fdb\u884c\u6b64\u64cd\u4f5c, \u5982\u6709\u7591\u4e49\u8bf7\u63d0\u4ea4\u7533\u8bc9, \u6216\u8005\u53d1\u90ae\u4ef6\u5230pr@segmentfault.com"]}
+    };
+</script>
+<script crossorigin="" src="http://static.segmentfault.com/v-56810165/3rd/assets.js"></script>
+<script crossorigin="" src="http://static.segmentfault.com/v-56810165/qa/js/question.js"></script>
+<script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-918487-8']);
+    _gaq.push(['_trackPageview']);
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src   = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-918487-8', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?e23800c454aa573c0ccb16b52665ac26";
+        var s  = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script src="//cbjs.baidu.com/js/m.js"></script>
+<script>
+    if (typeof BAIDU_CLB_fillSlotAsync === 'function') {
+                BAIDU_CLB_fillSlotAsync('981183', 'adid-981183');
+                BAIDU_CLB_fillSlotAsync('981184', 'adid-981184');
+                BAIDU_CLB_fillSlotAsync('981694', 'adid-981694');
+                BAIDU_CLB_fillSlotAsync('981179', 'adid-981179');
+                BAIDU_CLB_fillSlotAsync('1119908', 'adid-1119908');
+            }
+</script>
+</body>
+</html>

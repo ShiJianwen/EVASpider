@@ -1,0 +1,978 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="webkit" name="renderer"/>
+<meta content="15317273575564615446375" property="qc:admins"/>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+<meta content="LkzCRJ7rPEUwt6fVey2vhxiw1vQ" name="alexaVerifyID"/>
+<meta content="app-id=958101793, app-argument=" name="apple-itunes-app"/>
+<title>package-control - 我想在sublimetext上通过PackageControl安装Emmet插件，但是在安装PackageControl时出错 - SegmentFault</title>
+<meta content="我安装的是sublimeText3，下面是我进行的步骤，和报错的信息。 我主要是想装Emmet这个插件，方便开发html和css。 我看到github上Emmet安装方法有下面两种：Emmet 的github地址 我尝试第一种安装方式 With Package..." name="description"/>
+<meta content="sublimetext package-control emmet" name="keywords"/>
+<link href="/opensearch.xml" rel="search" title="SegmentFault" type="application/opensearchdescription+xml"/>
+<link href="http://static.segmentfault.com/v-56810165/global/img/favicon.ico" rel="shortcut icon"/>
+<link href="http://static.segmentfault.com/v-56810165/global/img/touch-icon.png" rel="apple-touch-icon"/>
+<meta content="#009a61" name="msapplication-TileColor"/>
+<meta content="http://static.segmentfault.com/v-56810165/global/img/touch-icon.png" name="msapplication-square150x150logo"/>
+<meta id="SFUserId" name="userId" value=""/>
+<meta id="SFUserRank" name="userRank" value=""/>
+<link href="/feeds/questions" rel="alternate" title="SegmentFault 最新问题" type="application/atom+xml"/>
+<link href="/feeds/blogs" rel="alternate" title="SegmentFault 最新文章" type="application/atom+xml"/>
+<link href="http://static.segmentfault.com/v-56810165/global/css/global.css" rel="stylesheet"/>
+<link href="http://static.segmentfault.com/v-56810165/qa/css/qa_all.css" rel="stylesheet"/>
+<link href="http://static.segmentfault.com/v-56810165/global/css/responsive.css" rel="stylesheet"/>
+<!--[if lt IE 9]>
+    <link rel="stylesheet" href="http://static.segmentfault.com/v-56810165/global/css/ie.css"/>
+    <script src="http://static.segmentfault.com/v-56810165/global/js/html5shiv.js"></script>
+    <script src="http://static.segmentfault.com/v-56810165/global/js/respond.js"></script>
+    <![endif]-->
+<script src="http://static.segmentfault.com/v-56810165/global/js/debug.js"></script>
+</head>
+<body class="qa-question">
+<!--[if lt IE 9]>
+<div class="alert alert-danger topframe" role="alert">你的浏览器实在<strong>太太太太太太旧了</strong>，放学别走，升级完浏览器再说 <a target="_blank"
+                                                                                                        class="alert-link"
+                                                                                                        href="http://browsehappy.com">立即升级</a>
+</div>
+<![endif]-->
+<div class="global-nav" xmlns="http://www.w3.org/1999/html">
+<nav class="container nav">
+<div class="dropdown m-menu">
+<a aria-expanded="false" aria-haspopup="true" class="visible-xs-block m-toptools" data-toggle="dropdown" href="javascript:void(0);" id="dLabel">
+<span class="glyphicon glyphicon-align-justify"></span>
+<span class="mobile-menu__unreadpoint"></span>
+</a>
+<ul aria-labelledby="dLabel" class="dropdown-menu" role="menu">
+<li class="mobile-menu__item"><a href="/questions/newest">问答</a></li>
+<li class="mobile-menu__item"><a href="/blogs">文章</a></li>
+<li class="mobile-menu__item"><a href="/notes">笔记</a></li>
+<li class="mobile-menu__item"><a href="/jobs">职位</a></li>
+<li class="mobile-menu__item"><a href="/events">活动</a></li>
+<li class="mobile-menu__item"><a href="/tags">标签</a></li>
+<li class="mobile-menu__item"><a href="/users">榜单</a></li>
+<li class="mobile-menu__item"><a href="/sites">子站</a></li>
+</ul>
+</div>
+<h1 class="logo"><a class="sf" href="/">SegmentFault</a></h1>
+<a class="visible-xs-block pull-right m-ask m-toptools" href="/user/login"><span class="glyphicon glyphicon-log-in"></span></a>
+<form action="/search" class="header-search pull-left hidden-sm hidden-xs">
+<button class="btn btn-link">
+<span class="sr-only">搜索</span>
+<span class="glyphicon glyphicon-search"></span>
+</button>
+<input class="form-control" id="searchBox" name="q" placeholder="输入关键字搜索" type="text" value=""/>
+</form>
+<ul class="menu list-inline pull-left hidden-xs">
+<li class="menu__item"><a href="/questions">问答</a></li>
+<li class="menu__item"><a href="/blogs">文章</a></li>
+<li class="menu__item"><a href="/notes">笔记</a></li>
+<li class="menu__item"><a href="/jobs">职位</a></li>
+<li class="menu__item dropdown hoverDropdown">
+<a class="more dropdownBtn" data-toggle="dropdown" href="/sites">
+                        ···<span class="sr-only">更多</span>
+</a>
+<ul class="dropdown-menu">
+<li><a href="/events">活动</a></li>
+<li><a href="/users">榜单</a></li>
+<li><a href="/tags">标签</a></li>
+<li><a href="/sites">子站</a></li>
+<li><a href="/app">移动 App</a></li>
+</ul>
+</li>
+</ul>
+<ul class="opts pull-right list-inline hidden-xs">
+<!-- <li class="opts__item">赶快加入吧 <a id="sfLogin" href="/user/login" class="SFLogin em ml10" onClick="_gaq.push(['_trackEvent', 'Button', 'Click', 'Login']);">立即登录</a></li> -->
+<li class="opts__item message has-unread">
+<a href="/tour" target="_blank">
+<span class="sr-only">消息</span>
+<span class="glyphicon glyphicon-envelope" id="messageCount"></span>
+</a>
+</li>
+<li class="opts__item">
+<a class="SFLogin em ml10" href="/user/login" onclick="_gaq.push(['_trackEvent', 'Button', 'Click', 'Login']);">注册 · 登录</a>
+</li>
+</ul>
+</nav>
+</div>
+<div class="wrap">
+<div class="post-topheader">
+<div class="container">
+<div class="row">
+<div class="col-md-9">
+<ol class="breadcrumb">
+<li><a href="/questions/newest">问答</a></li>
+<li class="active">问答详情</li>
+</ol>
+<h1 class="h3 title" data-id="1010000004218181" id="questionTitle"><a href="/q/1010000004218181">我想在sublimetext上通过PackageControl安装Emmet插件，但是在安装PackageControl时出错</a></h1>
+<div class="author">
+<a class="mr5" href="/u/afra"><img alt="afra" class="avatar-24 mr10" src="http://sfault-avatar.b0.upaiyun.com/403/216/4032167830-56836b778f6a6_big64"/><strong>afra</strong></a>
+<strong class="text-black mr10">25</strong>
+                        1 天前 提问
+                                                    · <a href="/q/1010000004218181/revision">1 天前 更新</a>
+</div>
+</div>
+<div class="col-md-3">
+<ul class="widget-action--ver list-unstyled">
+<li>
+<button class="btn btn-success btn-sm" data-do="follow" data-id="1010000004218181" data-placement="right" data-toggle="tooltip" data-type="question" id="sideFollow" title="关注后将获得更新提醒" type="button">关注
+                                </button>
+<strong>3</strong> 关注
+                        </li>
+<li>
+<button class="btn btn-default btn-sm" data-id="1010000004218181" data-type="question" id="sideBookmark" type="button">收藏
+                                </button>
+<strong id="sideBookmarked">0</strong> 收藏，<strong class="no-stress">100</strong> 浏览
+                        </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- end .post-topheader -->
+<div class="container mt30">
+<div class="row">
+<div class="col-xs-12 col-md-9 main">
+<article class="widget-question__item">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1010000004218181" data-placement="top" data-toggle="tooltip" data-type="question" title="问题对人有帮助，内容完整，我也想知道答案" type="button">
+<span class="sr-only">问题对人有帮助，内容完整，我也想知道答案</span>
+</button>
+<span class="count">0</span>
+<button class="hate" data-do="hate" data-id="1010000004218181" data-placement="bottom" data-toggle="tooltip" data-type="question" title="问题没有实际价值，缺少关键内容，没有改进余地" type="button">
+<span class="sr-only">问题没有实际价值，缺少关键内容，没有改进余地</span>
+</button>
+</div>
+<!-- end .widget-vote -->
+</div>
+<div class="post-offset">
+<div class="question fmt">
+<p>我安装的是<a href="http://www.sublimetext.com/%20">sublimeText3</a>，下面是我进行的步骤，和报错的信息。</p>
+<p><strong>我主要是想装Emmet这个插件，方便开发html和css。</strong></p>
+<p>我看到github上Emmet安装方法有下面两种：<a href="https://github.com/sergeche/emmet-sublime#readme">Emmet 的github地址</a></p>
+<p>我尝试第一种安装方式</p>
+<blockquote>
+<p>With Package Control:</p>
+<p>Run “Package Control: Install Package” command, find and install Emmet<br/>plugin. Restart ST editor (if required)</p>
+</blockquote>
+<p>这个就是通过Package Control安装，我按照<a href="https://packagecontrol.io/installation">packagecontrol官网</a>上给的代码运行会<strong>报错</strong>，进度就卡在这个地方。</p>
+<p>我操作的步骤是：<br/>step1.打开sublimeText<br/>step2.View &gt; Show Console<br/>step3.复制以下代码到控制台并回车</p>
+<pre><code>import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+</code></pre>
+<p>step4.控制台给出的错误信息：</p>
+<pre><code>DPI scale: 1
+startup, version: 3083 windows x64 channel: stable
+executable: /E/Sublime Text 3/sublime_text.exe
+working dir: /E/Sublime Text 3
+packages path: /C/Users/刘雨丹/AppData/Roaming/Sublime Text 3/Packages
+state path: /C/Users/刘雨丹/AppData/Roaming/Sublime Text 3/Local
+zip path: /E/Sublime Text 3/Packages
+zip path: /C/Users/刘雨丹/AppData/Roaming/Sublime Text 3/Installed Packages
+ignored_packages: ["Vintage"]
+pre session restore time: 0.254283
+startup time: 0.305283
+first paint time: 0.307283
+reloading plugin Default.block
+reloading plugin Default.comment
+reloading plugin Default.copy_path
+reloading plugin Default.delete_word
+reloading plugin Default.detect_indentation
+reloading plugin Default.duplicate_line
+reloading plugin Default.echo
+reloading plugin Default.exec
+reloading plugin Default.fold
+reloading plugin Default.font
+reloading plugin Default.goto_line
+reloading plugin Default.history_list
+reloading plugin Default.indentation
+reloading plugin Default.kill_ring
+reloading plugin Default.mark
+reloading plugin Default.new_templates
+reloading plugin Default.open_context_url
+reloading plugin Default.open_file_settings
+reloading plugin Default.open_in_browser
+reloading plugin Default.pane
+reloading plugin Default.paragraph
+reloading plugin Default.paste_from_history
+reloading plugin Default.quick_panel
+reloading plugin Default.save_on_focus_lost
+reloading plugin Default.scroll
+reloading plugin Default.set_unsaved_view_name
+reloading plugin Default.side_bar
+reloading plugin Default.sort
+reloading plugin Default.swap_line
+reloading plugin Default.switch_file
+reloading plugin Default.symbol
+reloading plugin Default.transform
+reloading plugin Default.transpose
+reloading plugin Default.trim_trailing_white_space
+reloading plugin CSS.css_completions
+reloading plugin Diff.diff
+reloading plugin HTML.encode_html_entities
+reloading plugin HTML.html_completions
+plugins loaded
+import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+Traceback (most recent call last):
+  File "./urllib/request.py", line 1248, in do_open
+  File "./http/client.py", line 1065, in request
+  File "./http/client.py", line 1103, in _send_request
+  File "./http/client.py", line 1061, in endheaders
+  File "./http/client.py", line 906, in _send_output
+  File "./http/client.py", line 844, in send
+  File "./http/client.py", line 822, in connect
+  File "./socket.py", line 435, in create_connection
+  File "./socket.py", line 426, in create_connection
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+  File "./urllib/request.py", line 156, in urlopen
+  File "./urllib/request.py", line 469, in open
+  File "./urllib/request.py", line 487, in _open
+  File "./urllib/request.py", line 447, in _call_chain
+  File "./urllib/request.py", line 1268, in http_open
+  File "./urllib/request.py", line 1251, in do_open
+urllib.error.URLError: &lt;urlopen error [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。&gt;
+</code></pre>
+<p>我尝试第二种安装方法，</p>
+<blockquote>
+<p>Manually:</p>
+<p>Clone or download git repo into your packages folder (in ST, find<br/>Browse Packages... menu item to open this folder) Restart ST editor<br/>(if required)</p>
+</blockquote>
+<p>我不太会使用github。<br/>我直接按了“download ZIP”这个按钮，下载了一个“emmet-sublime-master.zip”文件。<br/><img data-src="/img/bVrRuW"/><br/>解压后里面的内容是这样的，跟网上的教程也不太一样，接下来不知道要怎么办了，我感觉我的方法有问题，希望大神指教：</p>
+<p><img data-src="/img/bVrRva"/></p>
+</div>
+<ul class="taglist--inline mb20">
+<li class="tagPopup"><a class="tag" data-id="1040000002491394" data-img="" data-original-title="sublimetext" data-placement="top" data-toggle="popover" href="/t/sublimetext">sublimetext</a></li>
+<li class="tagPopup"><a class="tag" data-id="1040000002526801" data-img="" data-original-title="package-control" data-placement="top" data-toggle="popover" href="/t/package-control">package-control</a></li>
+<li class="tagPopup"><a class="tag" data-id="1040000000597075" data-img="" data-original-title="emmet" data-placement="top" data-toggle="popover" href="/t/emmet">emmet</a></li>
+</ul>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004218181">链接</a></li>
+<li><a class="comments" data-id="1010000004218181" data-target="#comment-1010000004218181" href="javascript:void(0);">
+                                            评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1010000004218181" id="comment-1010000004218181">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+<!-- end .post-offset -->
+</article>
+<div class="widget-answers">
+<div class="btn-group pull-right" role="group">
+<a class="btn btn-default btn-xs active" href="/q/1010000004218181#answers-title" id="sortby-rank">默认排序</a>
+<a class="btn btn-default btn-xs" href="?sort=created#answers-title" id="sortby-created">时间排序</a>
+</div>
+<h2 class="title h4 mt30 mb20 post-title" id="answers-title">3 个回答</h2>
+<article class="clearfix widget-answers__item accepted" id="a-1020000004224156">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004224156" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">0</span>
+<button class="hate" data-do="hate" data-id="1020000004224156" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+<div class="accepted-flag">采纳</div> </div>
+<div class="post-offset ">
+<a class="" href="/u/afra">
+<img alt="" class="avatar-24" src="http://sfault-avatar.b0.upaiyun.com/403/216/4032167830-56836b778f6a6_big64"/>
+</a>
+<strong><a class="mr5" href="/u/afra">afra</a> 25
+            </strong>
+<span class="ml10 text-muted">
+            22 小时前 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>昨天我继续尝试第一张办法安装，在把package control那段代码复制到控制台里始终连不上。<br/>后来我看到官网上还有<strong>另外一种办法安装package control</strong>，具体步骤：</p>
+<hr/>
+<p><strong>step1：</strong></p>
+<pre><code>preference-&gt;browse packages
+</code></pre>
+<p><strong>step2：</strong></p>
+<pre><code>创建文件夹，命名为“Installed Packages”
+</code></pre>
+<p><img data-src="/img/bVrS1e"/></p>
+<p><strong>step3：</strong></p>
+<pre><code>下载Package Control.sublime-package</code></pre>
+<p><a href="https://packagecontrol.io/installation">package control官网的地址</a>，在里面可以找到并下载到这个包。我实验室的网太慢，经常进不去，多刷几次就能打开了。</p>
+<p><img data-src="/img/bVrS1j"/></p>
+<p>好了，现在上面三步都完成了。<br/>下面的工作：</p>
+<hr/>
+<p><strong>step1：</strong></p>
+<pre><code>按下快捷键组合：ctrl+shift+p
+</code></pre>
+<p><strong>step2：</strong></p>
+<pre><code>输入ip，点击第一个install package
+</code></pre>
+<p><img data-src="/img/bVrS1I"/></p>
+<p><strong>step3:</strong></p>
+<pre><code>输入想要安装的插件“emmet”，点击。
+</code></pre>
+<p><strong>step4:</strong></p>
+<pre><code>OK.All done!!!
+</code></pre>
+<p><img data-src="/img/bVrSZY"/></p>
+<p><img data-src="/img/bVrS0y"/></p>
+<hr/>
+<p><strong>另外：</strong></p>
+<p>我在等待安装pyv8的时候，出现的下面的警告。以及有时候我在安装package control的时候经常提示我，下面的错误信息。</p>
+<p>安装package control时的错误信息(图是从别处拷贝的)：</p>
+<pre><code>package control：There are no package available for installation.
+</code></pre>
+<p><img data-src="/img/bVrS2f"/></p>
+<p>安装pyv8时的错误信息：</p>
+<pre><code>Error while loading PyV8 binary:exit code 3 Try to manually install PyV8 form...
+</code></pre>
+<p><img data-src="/img/bVrSZ7"/></p>
+<p>出现错误的原因是:</p>
+<p>1.网络状况不好。<br/>2.IPv6的原因</p>
+<p>解决方案是：</p>
+<p>1.网络不好的话，不断的重试重试就成功了。<br/>2.出现package control的错误提示信息据说也可能是IPv6的原因，我把别人的解决方案也贴上来：<br/><a href="http://blog.csdn.net/freshlover/article/details/44261229">http://blog.csdn.net/freshlover/article/details/44261229</a></p>
+<p>至此，我想我的sublime text3/package control/emmet就都安装好了。</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004218181/a-1020000004224156">链接</a></li>
+<li><a class="comments" data-id="1020000004224156" data-target="#comment-1020000004224156" href="javascript:void(0);">
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004224156" id="comment-1020000004224156">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004218385">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004218385" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">3</span>
+<button class="hate" data-do="hate" data-id="1020000004218385" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/yzzting">
+<img alt="" class="avatar-24" src="http://sfault-avatar.b0.upaiyun.com/403/098/4030989766-56820cb0ddc18_big64"/>
+</a>
+<strong><a class="mr5" href="/u/yzzting">YzzTing</a> 73
+            </strong>
+<span class="ml10 text-muted">
+            1 天前 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>你首先要有Package Control这个包管理，如何安装看这个<a href="https://packagecontrol.io/installation">installation Package Control</a></p>
+<p>安装好之后，<br/>在Sublime Text 3中按下快捷键Ctrl+Shift+P,<br/>在出现的文本框中输入Install Package(或直接输入“ip”)选中Install Package并回车,<br/>输入或选择你需要的插件再按Enter（回车）就可以安装插件了</p>
+<p>最后关于git的使用可以参照<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/">Git教程 - 廖雪峰的官方网站</a></p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004218181/a-1020000004218385">链接</a></li>
+<li><a class="comments" data-id="1020000004218385" data-target="#comment-1020000004218385" href="javascript:void(0);">4
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004218385" id="comment-1020000004218385">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004218435">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004218435" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">0</span>
+<button class="hate" data-do="hate" data-id="1020000004218435" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/eric__lee">
+<img alt="" class="avatar-24" src="http://sfault-avatar.b0.upaiyun.com/230/175/2301754858-1030000000349738_big64"/>
+</a>
+<strong><a class="mr5" href="/u/eric__lee">eric</a> 1.3k
+            </strong>
+<span class="ml10 text-muted">
+            1 天前 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>挂代理重新安装 PackageControl 试试</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004218181/a-1020000004218435">链接</a></li>
+<li><a class="comments" data-id="1020000004218435" data-target="#comment-1020000004218435" href="javascript:void(0);">1
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004218435" id="comment-1020000004218435">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<div class="text-center">
+</div>
+</div><!-- /.widget-answers -->
+<h4>撰写答案</h4>
+<input id="draftId" type="hidden" value=""/>
+<input id="questionId" type="hidden" value="1010000004218181"/>
+<form action="/question/1010000004218181/answers/add" class="editor-wrap" method="post">
+<div class="editor" id="questionText">
+<textarea class="form-control" id="answerEditor" name="text" placeholder="撰写答案..." rows="4"></textarea>
+</div>
+<div class="hide mt15 clearfix" id="answerSubmit">
+<div class="checkbox pull-left">
+<label><input class="" id="shareToWeibo" type="checkbox"/>
+                            同步到新浪微博</label>
+</div>
+<div class="pull-right">
+<span class="hidden text-muted" id="editorStatus">
+</span>
+<a class="mr10 hidden" href="javascript:void(0);" id="dropIt">
+                            [舍弃]
+                        </a>
+<button class="btn btn-lg btn-primary ml20" data-id="1010000004218181" id="answerIt" type="submit">提交回答
+                        </button>
+</div>
+</div>
+</form>
+</div>
+<!-- /.main -->
+<div class="col-xs-12 col-md-3 side">
+<div class="sfad-sidebar">
+<div class="sfad-item" data-adn="ad-981179" id="adid-981179">
+<button aria-hidden="true" class="close" type="button">×</button>
+</div>
+</div>
+<div class="widget-box no-border">
+<h2 class="h4 widget-box__title">相似问题</h2>
+<ul class="widget-links list-unstyled">
+<li class="widget-links__item"><a href="/q/1010000004165753" title="Emmet插件装了没法用是怎么回事">Emmet插件装了没法用是怎么回事</a>
+<small class="text-muted">
+                                                    9 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000004009853" title="SublimeText 求插件支持php跳转到require include包含的文件？">SublimeText 求插件支持php跳转到require include包含的文件？</a>
+<small class="text-muted">
+                                                    2 回答
+                                                                             |                             已解决
+                                            </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000003836980" title="求助sublimetext,不知道安装了什么插件，会自动提示英文文档，不知道如何删除！">求助sublimetext,不知道安装了什么插件，会自动提示英文文档，不知道如何删除！</a>
+<small class="text-muted">
+                                                    1 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000002895784" title="sublime text2 安装了 emmet ">sublime text2 安装了 emmet </a>
+<small class="text-muted">
+                                                    5 回答
+                                                                             |                             已解决
+                                            </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000000211633" title="SublimeText 2的tab键冲突">SublimeText 2的tab键冲突</a>
+</li>
+<li class="widget-links__item"><a href="/q/1010000003737869" title="sublimeText3 配置nodejs环境有误">sublimeText3 配置nodejs环境有误</a>
+<small class="text-muted">
+                                                    2 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000000166907" title="怎样在Notepad++下安装插件？">怎样在Notepad++下安装插件？</a>
+<small class="text-muted">
+                                                    3 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000001725234" title="有哪些适合前端使用的vim插件？">有哪些适合前端使用的vim插件？</a>
+<small class="text-muted">
+                                                    5 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000002741358" title="sublime的ColorPicker和EmmetLiveStyle插件无效！求助！！">sublime的ColorPicker和EmmetLiveStyle插件无效！求助！！</a>
+<small class="text-muted">
+                                                    3 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000002473801" title="Sublime Aligment对齐插件按键冲突">Sublime Aligment对齐插件按键冲突</a>
+<small class="text-muted">
+                                                    2 回答
+                                                                             |                             已解决
+                                            </small>
+</li>
+</ul>
+</div>
+<div class="widget-share__full" data-shorturl="http://sfau.lt/bNrRvl" data-text="我想在sublimetext上通过PackageControl安装Emmet插件，但是在安装PackageControl时出错" data-url="http://segmentfault.com/q/1010000004218181"></div>
+</div><!-- /.side -->
+</div>
+</div>
+</div>
+<div class="modal" id="shareToWeiboModal">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" data-dismiss="modal" type="button">
+<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+</button>
+<h4 class="modal-title">分享</h4>
+</div>
+<div class="modal-body">
+<p class="sfModal-content">
+                    分享到微博？
+                </p>
+</div>
+<div class="modal-footer ">
+<button class="btn btn-default dont-likeweibo" data-dismiss="modal" type="button">取消并且不再弹出</button>
+<a class="btn btn-primary done-btn" href="" id="shareLink" onclick="$('#shareToWeiboModal').modal('hide')" target="_blank">分享</a>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden widget-register widget-welcome-question mt20 hidden-xs widget-welcome widget-register-slideUp">
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<h2 class="title h4">与我们一起探索更多的未知</h2>
+<p>专业的开发者技术社区，为用户提供多样化的线上知识交流，丰富的线下活动及给力的工作机会</p>
+</div>
+<form action="/api/user/register/fast" method="post">
+<div class="col-sm-5">
+<div class="form-group mb0">
+<input class="form-control" name="mail" placeholder="邮箱地址" required="" type="text"/>
+</div>
+</div>
+<div class="col-sm-3">
+<button class="btn btn-primary btn-block" type="submit">加入只需一步</button>
+</div>
+<div class="col-sm-10 mt10 captcha-part" style="display:none;">
+<div class="row">
+<div class="col-sm-4 pr0">
+<input class="form-control" disabled="" name="captcha" placeholder="请输入验证码" required="" type="text"/>
+</div>
+<div class="col-sm-4 pr0">
+<a href="javascript:void(0)"><img height="35" src=""/></a>
+</div>
+</div>
+</div>
+</form>
+<a class="close" href="javascript:void(0);"><span>×</span></a>
+</div>
+</div>
+</div>
+<div class="modal widget-911" id="delete-modal">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+<h4 class="modal-title radio-del question-close-only">关闭<span class="type-911">问题</span>（请谨慎操作）</h4>
+<h4 class="modal-title radio-del question-delete-only">删除<span class="type-911">问题</span>（请谨慎操作）</h4>
+<h4 class="modal-title radio-del answer-delete-only">删除<span class="type-911">回答</span>（请谨慎操作）</h4>
+<h4 class="modal-title radio-del answer-ignore-only">忽略<span class="type-911">回答</span></h4>
+</div>
+<div class="modal-body">
+<p>
+<strong class="required radio-del question-close-only">关闭理由：</strong>
+<strong class="required radio-del question-delete-only answer-delete-only">删除理由：</strong>
+<strong class="required radio-del answer-ignore-only">忽略理由：</strong>
+</p>
+<div id="reportDescription">
+<div class="radio-del radio all">
+<label>
+<input name="descRadio" type="radio" value="推广（招聘、广告、SEO 等）方面的内容"/>
+                            推广（招聘、广告、SEO 等）方面的内容
+                        </label>
+</div>
+<div class="radio-del radio question-close-only">
+<label>
+<input name="descRadio" type="radio" value="与已有问题重复"/>
+                            与已有问题重复（请编辑该提问指向已有相同问题）
+                        </label>
+</div>
+<div class="radio-del radio answer-ignore-only">
+<label>
+<input name="descRadio" type="radio" value="答非所问，不符合答题要求"/>
+                            答非所问，不符合答题要求
+                        </label>
+</div>
+<div class="radio-del radio answer-ignore-only">
+<label>
+<input name="descRadio" type="radio" value="宜作评论而非答案"/>
+                            宜作评论而非答案
+                        </label>
+</div>
+<div class="radio-del radio all">
+<label>
+<input name="descRadio" type="radio" value="带有人身攻击、辱骂、仇恨等违反条款的内容"/>
+                            带有人身攻击、辱骂、仇恨等违反条款的内容
+                        </label>
+</div>
+<div class="radio-del radio question-close-only">
+<label>
+<input name="descRadio" type="radio" value="无法获得确切结果的问题"/>
+                            无法获得确切结果的问题
+                        </label>
+</div>
+<div class="radio-del radio question-close-only">
+<label>
+<input name="descRadio" type="radio" value="非开发直接相关的问题"/>
+                            非开发直接相关的问题
+                        </label>
+</div>
+<div class="radio-del radio question-close-only question-delete-only">
+<label>
+<input name="descRadio" type="radio" value="非技术提问的讨论型问题"/>
+                            非技术提问的讨论型问题
+                        </label>
+</div>
+<div class="radio-del radio all btwRadio">
+<label>
+<input name="descRadio" type="radio" value=""/>
+                            其他原因（请补充说明）
+                        </label>
+</div>
+<div class="btw" style="display:none;">
+<p class="mt20"><strong>补充说明：</strong></p>
+<textarea class="form-control" id="deleteDesc" name="description" rows="3"></textarea>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-default" data-dismiss="modal" type="button">取消</button>
+<button class="btn btn-danger" id="submit-delete" type="button">提交</button>
+</div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="modal widget-911" id="911">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" data-dismiss="modal" type="button">
+<span aria-hidden="true">×</span>
+<span class="sr-only">Close</span>
+</button>
+<h4 class="modal-title">举报<span data-model="type"></span></h4>
+</div>
+<div class="modal-body">
+<form id="reportForm">
+<!-- 后台返回信息 -->
+<p class="alert alert-warning" data-model="returnMsg"></p>
+<div data-role="base">
+<p>
+<strong class="required">我要举报该<span data-model="type"></span>，理由是：</strong>
+</p>
+<ul class="list-unstyled" data-model="list"></ul>
+</div>
+</form>
+</div>
+<div class="modal-footer">
+<button class="btn btn-default pull-left" data-role="back" style="display:none" type="button">返回重选</button>
+<button class="btn btn-default" data-dismiss="modal" type="button">取消</button>
+<button class="btn btn-primary" data-role="submit" type="button">提交</button>
+</div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<footer id="footer">
+<div class="container">
+<div class="row hidden-xs">
+<dl class="col-sm-2 site-link">
+<dt>网站相关</dt>
+<dd><a href="/about">关于我们</a></dd>
+<dd><a href="/tos">服务条款</a></dd>
+<dd><a href="/faq">帮助中心</a></dd>
+<dd><a href="/repu">声望与权限</a></dd>
+<dd><a href="/markdown">编辑器语法</a></dd>
+<dd><a href="//weekly.segmentfault.com/">每周精选</a></dd>
+<dd><a href="/app">App 下载</a></dd>
+</dl>
+<dl class="col-sm-2 site-link">
+<dt>联系合作</dt>
+<dd><a href="/contact">联系我们</a></dd>
+<dd><a href="/hiring">加入我们</a></dd>
+<dd><a href="/link">合作伙伴</a></dd>
+<dd><a href="/press">媒体报道</a></dd>
+<dd><a href="/0x">建议反馈</a></dd>
+<dd><a href="http://pan.baidu.com/share/link?shareid=604288&amp;uk=839272106" target="_blank">Logo 下载</a>
+</dd>
+</dl>
+<dl class="col-sm-2 site-link">
+<dt>常用链接</dt>
+<dd><a href="https://chrome.google.com/webstore/detail/segmentfault-%E7%AC%94%E8%AE%B0/pjklfdmleagfaekibdccmhlhellefcfo" target="_blank">笔记插件: Chrome</a></dd>
+<dd><a href="https://addons.mozilla.org/zh-CN/firefox/addon/sf-note-ext/" target="_blank">笔记插件: Firefox</a></dd>
+<dd><a href="//mirrors.segmentfault.com/" target="_blank">文档镜像</a></dd>
+<dd>订阅：<a href="/feeds">问答</a> / <a href="/feeds/blogs">文章</a></dd>
+<dd><a href="/hackathon">黑客马拉松</a></dd>
+<dd><a href="/giveaways" target="_blank">开发者福利</a></dd>
+<!--             <dd><a href="http://zs.segmentfault.com/" target="_blank">一起涨姿势</a></dd> -->
+<dd><a href="https://namebeta.com/" target="_blank">域名搜索注册</a></dd>
+</dl>
+<dl class="col-sm-2 site-link">
+<dt>关注我们</dt>
+<dd><a href="https://github.com/SegmentFault" target="_blank">GitHub</a></dd>
+<dd><a href="https://twitter.com/segment_fault" target="_blank">Twitter</a></dd>
+<!-- <dd><a href="http://page.renren.com/699146294" target="_blank">人人网</a></dd> -->
+<dd><a href="https://www.linkedin.com/company/segmentfault" target="_blank">LinkedIn</a></dd>
+<dd><a href="http://weibo.com/segmentfault" target="_blank">新浪微博</a></dd>
+<dd><a href="http://i.youku.com/segmentfault" target="_blank">优酷主页</a></dd>
+<dd><a href="/blog/segmentfault" target="_blank">开发日志</a></dd>
+</dl>
+<dl class="col-sm-4 site-link" id="license">
+<dt>内容许可</dt>
+<dd>除特别说明外，用户内容均采用 <a href="http://creativecommons.org/licenses/by-sa/3.0/cn/" rel="license" target="_blank">知识共享署名-相同方式共享 3.0
+                        中国大陆许可协议</a> 进行许可
+                </dd>
+<dd>本站由 <a href="http://qingcloud.com/" target="_blank">青云 QingCloud</a> 提供云计算服务<br/><a href="https://www.upyun.com/?utm_source=segmentfault&amp;utm_medium=link&amp;utm_campaign=upyun&amp;md=segmentfault" target="_blank">又拍云</a>
+                    提供 CDN 存储服务
+                </dd>
+<dd>
+<a href="http://www.anquan.org" key="55e59bd4efbfb0241247d4e4" logo_size="124x47" logo_type="realname">
+<script src="//static.anquan.org/static/outer/js/aq_auth.js"></script>
+</a>
+<!-- Begin DigiCert site seal HTML and JavaScript -->
+<div data-language="en" id="DigiCertClickID_2bMgZTfe" style="float: left; margin-right: 10px"></div>
+<script type="text/javascript">
+                        var __dcid = __dcid || [];
+                        __dcid.push(["DigiCertClickID_2bMgZTfe", "3", "s", "black", "2bMgZTfe"]);
+                        (function () {
+                            var cid   = document.createElement("script");
+                            cid.async = true;
+                            cid.src   = "//seal.digicert.com/seals/cascade/seal.min.js";
+                            var s     = document.getElementsByTagName("script");
+                            var ls    = s[(s.length - 1)];
+                            ls.parentNode.insertBefore(cid, ls.nextSibling);
+                        }());
+                    </script>
+<!-- End DigiCert site seal HTML and JavaScript -->
+</dd>
+</dl>
+</div>
+<div class="copyright">
+            Copyright © 2011-2015 SegmentFault. 当前呈现版本 15.12.09<br/><a href="http://www.miibeian.gov.cn/" rel="nofollow">浙ICP备15005796号-2</a>
+</div>
+<p class="text-center">
+<a class="js__view--selector hidden-sm hidden-md hidden-lg" data-action="mobile" href="javascript:;">移动版</a>
+<a class="js__view--selector hidden-sm hidden-md hidden-lg" data-action="desktop" href="javascript:;">桌面版</a>
+</p>
+</div>
+</footer>
+<div class="hidden-xs hidden-sm" id="fixedTools">
+<a class="hidden border-bottom" href="#" id="backtop">回顶部</a>
+<div class="qrcodeWraper">
+<a href="/app#qrcode"><span class="glyphicon glyphicon-qrcode"></span></a>
+<img alt="sf-wechat" class="border" id="qrcode" src="http://static.segmentfault.com/v-56810165/page/img/app/appQrcode.png"/>
+<p class="qrcode-text">扫扫下载 App</p>
+</div>
+</div>
+<div class="app-promotion-bar">
+<a href="javascript:;"><i class="fa fa-close close"></i></a>
+<div class="icon"></div>
+<h5 class="title h5">SegmentFault</h5>
+<p class="describe">一起探索更多未知</p>
+<a class="download-btn btn btn-sm btn-primary" href="/app#qrcode">下载 App</a>
+</div>
+<script id="loginModal" type="text/template">
+<div class="row bg-white login-modal">
+    <div class="col-md-4 col-sm-12 col-md-push-7 login-wrap">
+        <h1 class="h4 text-muted login-title">用户登录</h1>
+        <form action="/api/user/login" method="POST" role="form" class="mt30">
+            <div class="form-group">
+                <label class="control-label">Email</label>
+                <input type="email" class="form-control" name="mail" required placeholder="hello@segmentfault.com">
+            </div>
+            <div class="form-group">
+                <label class="control-label">密码</label>
+                <input type="password" class="form-control" name="password" required placeholder="密码">
+            </div>
+            <div class="form-group clearfix">
+                <div class="checkbox pull-left">
+                    <label><input name="remember" type="checkbox" value="1" checked> 记住登录状态</label>
+                </div>
+                <button type="submit" class="btn btn-primary pull-right pl20 pr20">登录</button>
+            </div>
+        </form>
+        <p class="h4 text-muted visible-xs-block h4">快速登录</p>
+        <div class="widget-login mt30">
+            <p class="text-muted mt5 mr10 pull-left hidden-xs">快速登录</p>
+            <a href="/user/oauth/google" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-google"><span class="icon-sn-google"></span> <strong class="visible-xs-inline">Google 账号</strong></a>
+            <a href="/user/oauth/github" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-github"><span class="icon-sn-github"></span> <strong class="visible-xs-inline">Github 账号</strong></a>
+            <a href="/user/oauth/weibo" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-weibo"><span class="icon-sn-weibo"></span> <strong class="visible-xs-inline">新浪微博账号</strong></a>
+            <a href="/user/oauth/qq" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-qq"><span class="icon-sn-qq"></span> <strong class="visible-xs-inline">QQ 账号</strong></a>
+            <a href="/user/oauth/weixin" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-wechat"><span class="icon-sn-wechat"></span> <strong class="visible-xs-inline">微信账号</strong></a>
+            <button type="button" class="btn mb5 btn-default btn-sm btn-sn-more" id="loginShowMore">...</button>
+            <a href="/user/oauth/twitter" class="btn pl5 pr5 mb5 btn-default btn-sn-twitter btn-sm hidden"><span class="icon-sn-twitter"></span> <strong class="visible-xs-inline">Twitter 账号</strong></a>
+            <a href="/user/oauth/facebook" class="btn pl5 pr5 mb5 btn-default btn-sn-facebook btn-sm hidden"><span class="icon-sn-facebook"></span> <strong class="visible-xs-inline">Facebook 账号</strong></a>
+            <a href="/user/oauth/douban" class="btn pl5 pr5 mb5 btn-default btn-sn-douban btn-sm hidden"><span class="icon-sn-douban"></span> <strong class="visible-xs-inline">豆瓣账号</strong></a>
+        </div>
+    </div>
+    <div class="login-vline hidden-xs hidden-sm"></div>
+    <div class="col-md-4 col-md-pull-3 col-sm-12 login-wrap">
+        <h1 class="h4 text-muted login-title">创建新账号</h1>
+        <form action="/api/user/register" method="POST" role="form" class="mt30">
+            <div class="form-group">
+                <label for="name" class="control-label">用户名</label>
+                <input type="text" class="form-control" name="name" required placeholder="字母、数字等，用户名唯一">
+            </div>
+            <div class="form-group">
+                <label for="mail" class="control-label">Email</label>
+                <input type="hidden" style="display:none" name="mail">
+                <input type="email" autocomplete="off" class="form-control register-mail" name="mail" required placeholder="hello@segmentfault.com">
+            </div>
+            <div class="form-group">
+                <label for="password" class="control-label">密码</label>
+                <input type="password" class="form-control" name="password" required placeholder="不少于 6 位">
+            </div>
+            <div class="form-group" style="display:none;">
+                <label class="required control-label">验证码</label>
+                <input type="text" class="form-control" id="captcha" name="captcha" placeholder="请输入下方的验证码">
+                <div class="mt10"><a id="loginReloadCaptcha"  href="javascript:void(0)"><img data-src="/user/captcha?w=240&h=50" class="captcha" width="240" height="50" /></a></div>
+            </div>
+            <div class="form-group clearfix">
+                <div class="checkbox pull-left">
+                    同意并接受<a href="/tos" target="_blank">《服务条款》</a>
+                </div>
+                <button type="submit" class="btn btn-primary pl20 pr20 pull-right">注册</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="text-center text-muted mt30">
+    <a href="/user/forgot" class="ml5">找回密码</a>
+</div>
+</script>
+<script>
+    (function (w) {
+        w.SF = {
+            staticUrl: "http://static.segmentfault.com/v-56810165"
+        };
+        w.SF.token = (function () {
+    var _csvH4 = /* 's'//'s' */''+//'q'
+'f'+'16'//'xK6'
++''///*'7c'*/'7c'
++//'OpJ'
+'c60'+'cf'//'iGd'
++//'xsg'
+'66d'+''///*'MBy'*/'MBy'
++'d'//'T'
++//'s'
+'36a'+'10d'//'pR'
++'Psi'//'Psi'
++'18'//'sk1'
++'bd0'//'E'
++'HZz'//'HZz'
++//'9po'
+'f0'+//'He'
+'7'+'f3'//'8k'
++'a'//'nx'
++'67'//'ELX'
++''///*'v'*/'v'
++//'lK'
+'lK'+//'O0y'
+'O0y'+//'f4'
+'e', _Jux = [[18,21],[23,26],[31,33],[31,34]];
+
+    for (var i = 0; i < _Jux.length; i ++) {
+        _csvH4 = _csvH4.substring(0, _Jux[i][0]) + _csvH4.substring(_Jux[i][1]);
+    }
+
+    return _csvH4;
+})();;
+    })(window);
+
+                var lock = {
+        type : "",
+        text : '',
+        table: {"ban_post":[1,"\u4f60\u5df2\u7ecf\u88ab\u7981\u8a00, \u65e0\u6cd5\u8fdb\u884c\u6b64\u64cd\u4f5c, \u5982\u6709\u7591\u4e49\u8bf7\u63d0\u4ea4\u7533\u8bc9, \u6216\u8005\u53d1\u90ae\u4ef6\u5230pr@segmentfault.com"]}
+    };
+</script>
+<script crossorigin="" src="http://static.segmentfault.com/v-56810165/3rd/assets.js"></script>
+<script crossorigin="" src="http://static.segmentfault.com/v-56810165/qa/js/question.js"></script>
+<script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-918487-8']);
+    _gaq.push(['_trackPageview']);
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src   = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-918487-8', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?e23800c454aa573c0ccb16b52665ac26";
+        var s  = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script src="//cbjs.baidu.com/js/m.js"></script>
+<script>
+    if (typeof BAIDU_CLB_fillSlotAsync === 'function') {
+                BAIDU_CLB_fillSlotAsync('981183', 'adid-981183');
+                BAIDU_CLB_fillSlotAsync('981184', 'adid-981184');
+                BAIDU_CLB_fillSlotAsync('981694', 'adid-981694');
+                BAIDU_CLB_fillSlotAsync('981179', 'adid-981179');
+                BAIDU_CLB_fillSlotAsync('1119908', 'adid-1119908');
+            }
+</script>
+</body>
+</html>

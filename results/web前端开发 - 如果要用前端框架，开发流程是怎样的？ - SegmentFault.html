@@ -1,0 +1,1078 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="webkit" name="renderer"/>
+<meta content="15317273575564615446375" property="qc:admins"/>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+<meta content="LkzCRJ7rPEUwt6fVey2vhxiw1vQ" name="alexaVerifyID"/>
+<meta content="app-id=958101793, app-argument=" name="apple-itunes-app"/>
+<title>web前端开发 - 如果要用前端框架，开发流程是怎样的？ - SegmentFault</title>
+<meta content="公司有3个后端，一个前端（我），我属于初级水平吧，开发流程：前端切页面、写页面交互，然后把页面给后端（JAVA），后端“套页面”（Velocity模板），然后前端在模板上再进行微调。显然，这种流程不是很高效，小作..." name="description"/>
+<meta content="web前端开发" name="keywords"/>
+<link href="/opensearch.xml" rel="search" title="SegmentFault" type="application/opensearchdescription+xml"/>
+<link href="http://static.segmentfault.com/v-56810165/global/img/favicon.ico" rel="shortcut icon"/>
+<link href="http://static.segmentfault.com/v-56810165/global/img/touch-icon.png" rel="apple-touch-icon"/>
+<meta content="#009a61" name="msapplication-TileColor"/>
+<meta content="http://static.segmentfault.com/v-56810165/global/img/touch-icon.png" name="msapplication-square150x150logo"/>
+<meta id="SFUserId" name="userId" value=""/>
+<meta id="SFUserRank" name="userRank" value=""/>
+<link href="/feeds/questions" rel="alternate" title="SegmentFault 最新问题" type="application/atom+xml"/>
+<link href="/feeds/blogs" rel="alternate" title="SegmentFault 最新文章" type="application/atom+xml"/>
+<link href="http://static.segmentfault.com/v-56810165/global/css/global.css" rel="stylesheet"/>
+<link href="http://static.segmentfault.com/v-56810165/qa/css/qa_all.css" rel="stylesheet"/>
+<link href="http://static.segmentfault.com/v-56810165/global/css/responsive.css" rel="stylesheet"/>
+<!--[if lt IE 9]>
+    <link rel="stylesheet" href="http://static.segmentfault.com/v-56810165/global/css/ie.css"/>
+    <script src="http://static.segmentfault.com/v-56810165/global/js/html5shiv.js"></script>
+    <script src="http://static.segmentfault.com/v-56810165/global/js/respond.js"></script>
+    <![endif]-->
+<script src="http://static.segmentfault.com/v-56810165/global/js/debug.js"></script>
+</head>
+<body class="qa-question">
+<!--[if lt IE 9]>
+<div class="alert alert-danger topframe" role="alert">你的浏览器实在<strong>太太太太太太旧了</strong>，放学别走，升级完浏览器再说 <a target="_blank"
+                                                                                                        class="alert-link"
+                                                                                                        href="http://browsehappy.com">立即升级</a>
+</div>
+<![endif]-->
+<div class="global-nav" xmlns="http://www.w3.org/1999/html">
+<nav class="container nav">
+<div class="dropdown m-menu">
+<a aria-expanded="false" aria-haspopup="true" class="visible-xs-block m-toptools" data-toggle="dropdown" href="javascript:void(0);" id="dLabel">
+<span class="glyphicon glyphicon-align-justify"></span>
+<span class="mobile-menu__unreadpoint"></span>
+</a>
+<ul aria-labelledby="dLabel" class="dropdown-menu" role="menu">
+<li class="mobile-menu__item"><a href="/questions/newest">问答</a></li>
+<li class="mobile-menu__item"><a href="/blogs">文章</a></li>
+<li class="mobile-menu__item"><a href="/notes">笔记</a></li>
+<li class="mobile-menu__item"><a href="/jobs">职位</a></li>
+<li class="mobile-menu__item"><a href="/events">活动</a></li>
+<li class="mobile-menu__item"><a href="/tags">标签</a></li>
+<li class="mobile-menu__item"><a href="/users">榜单</a></li>
+<li class="mobile-menu__item"><a href="/sites">子站</a></li>
+</ul>
+</div>
+<h1 class="logo"><a class="sf" href="/">SegmentFault</a></h1>
+<a class="visible-xs-block pull-right m-ask m-toptools" href="/user/login"><span class="glyphicon glyphicon-log-in"></span></a>
+<form action="/search" class="header-search pull-left hidden-sm hidden-xs">
+<button class="btn btn-link">
+<span class="sr-only">搜索</span>
+<span class="glyphicon glyphicon-search"></span>
+</button>
+<input class="form-control" id="searchBox" name="q" placeholder="输入关键字搜索" type="text" value=""/>
+</form>
+<ul class="menu list-inline pull-left hidden-xs">
+<li class="menu__item"><a href="/questions">问答</a></li>
+<li class="menu__item"><a href="/blogs">文章</a></li>
+<li class="menu__item"><a href="/notes">笔记</a></li>
+<li class="menu__item"><a href="/jobs">职位</a></li>
+<li class="menu__item dropdown hoverDropdown">
+<a class="more dropdownBtn" data-toggle="dropdown" href="/sites">
+                        ···<span class="sr-only">更多</span>
+</a>
+<ul class="dropdown-menu">
+<li><a href="/events">活动</a></li>
+<li><a href="/users">榜单</a></li>
+<li><a href="/tags">标签</a></li>
+<li><a href="/sites">子站</a></li>
+<li><a href="/app">移动 App</a></li>
+</ul>
+</li>
+</ul>
+<ul class="opts pull-right list-inline hidden-xs">
+<!-- <li class="opts__item">赶快加入吧 <a id="sfLogin" href="/user/login" class="SFLogin em ml10" onClick="_gaq.push(['_trackEvent', 'Button', 'Click', 'Login']);">立即登录</a></li> -->
+<li class="opts__item message has-unread">
+<a href="/tour" target="_blank">
+<span class="sr-only">消息</span>
+<span class="glyphicon glyphicon-envelope" id="messageCount"></span>
+</a>
+</li>
+<li class="opts__item">
+<a class="SFLogin em ml10" href="/user/login" onclick="_gaq.push(['_trackEvent', 'Button', 'Click', 'Login']);">注册 · 登录</a>
+</li>
+</ul>
+</nav>
+</div>
+<div class="wrap">
+<div class="post-topheader">
+<div class="container">
+<div class="row">
+<div class="col-md-9">
+<ol class="breadcrumb">
+<li><a href="/questions/newest">问答</a></li>
+<li class="active">问答详情</li>
+</ol>
+<h1 class="h3 title" data-id="1010000004221774" id="questionTitle"><a href="/q/1010000004221774">如果要用前端框架，开发流程是怎样的？</a></h1>
+<div class="author">
+<a class="mr5" href="/u/onemonth"><img alt="jasonintju" class="avatar-24 mr10" src="http://sfault-avatar.b0.upaiyun.com/289/886/2898869684-55f8d08843aa6_big64"/><strong>jasonintju</strong></a>
+<strong class="text-black mr10">1.4k</strong>
+                        1 天前 提问
+                                                                    </div>
+</div>
+<div class="col-md-3">
+<ul class="widget-action--ver list-unstyled">
+<li>
+<button class="btn btn-success btn-sm" data-do="follow" data-id="1010000004221774" data-placement="right" data-toggle="tooltip" data-type="question" id="sideFollow" title="关注后将获得更新提醒" type="button">关注
+                                </button>
+<strong>12</strong> 关注
+                        </li>
+<li>
+<button class="btn btn-default btn-sm" data-id="1010000004221774" data-type="question" id="sideBookmark" type="button">收藏
+                                </button>
+<strong id="sideBookmarked">2</strong> 收藏，<strong class="no-stress">273</strong> 浏览
+                        </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- end .post-topheader -->
+<div class="container mt30">
+<div class="row">
+<div class="col-xs-12 col-md-9 main">
+<article class="widget-question__item">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1010000004221774" data-placement="top" data-toggle="tooltip" data-type="question" title="问题对人有帮助，内容完整，我也想知道答案" type="button">
+<span class="sr-only">问题对人有帮助，内容完整，我也想知道答案</span>
+</button>
+<span class="count">2</span>
+<button class="hate" data-do="hate" data-id="1010000004221774" data-placement="bottom" data-toggle="tooltip" data-type="question" title="问题没有实际价值，缺少关键内容，没有改进余地" type="button">
+<span class="sr-only">问题没有实际价值，缺少关键内容，没有改进余地</span>
+</button>
+</div>
+<!-- end .widget-vote -->
+</div>
+<div class="post-offset">
+<div class="question fmt">
+<p>公司有3个后端，一个前端（我），我属于初级水平吧，开发流程：<br/>前端切页面、写页面交互，然后把页面给后端（JAVA），后端“套页面”（Velocity模板），然后前端在模板上再进行微调。显然，这种流程不是很高效，小作坊生产^_^，前后端糅杂在一起，且经常会有后端小伙伴套页面的时候可能一不小心多了一个标签少了一个标签之类的，造成格式错乱。但是迫于很多外在原因，目前也只能是这种开发流程。<br/>平时与页面展现相关的都由我来解决（切页面、写交互、碰到问题解决问题，可能工作的内容太单一让我感觉收获不大），但我却很少接触前后端数据交互的部分，而这一块也恰恰是我想做的。针对这一点，<strong>后期学习方向，各位能给点建议吗？</strong>谢谢！</p>
+<p>页面我全是用 HTML+CSS+JS(Jquery) 做成的，但是老板总认为用个前端框架才显得网站高大上，请问：以我目前的情况（只使用过Bootstrap）以及公司的人力来看，如果<strong>使用框架会带来工作流程的哪些变化？以及现阶段是否必要引入前端框架？</strong>（如果可行，我会投入100%的精力去学习新知识）</p>
+<p>前端新人刚入行不久，还请过来人多多指点，感激不尽！</p>
+</div>
+<ul class="taglist--inline mb20">
+<li class="tagPopup"><a class="tag" data-id="1040000000117807" data-img="" data-original-title="web前端开发" data-placement="top" data-toggle="popover" href="/t/web%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91">web前端开发</a></li>
+</ul>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004221774">链接</a></li>
+<li><a class="comments" data-id="1010000004221774" data-target="#comment-1010000004221774" href="javascript:void(0);">2
+                                            评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1010000004221774" id="comment-1010000004221774">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+<!-- end .post-offset -->
+</article>
+<div class="widget-answers">
+<div class="btn-group pull-right" role="group">
+<a class="btn btn-default btn-xs active" href="/q/1010000004221774#answers-title" id="sortby-rank">默认排序</a>
+<a class="btn btn-default btn-xs" href="?sort=created#answers-title" id="sortby-created">时间排序</a>
+</div>
+<h2 class="title h4 mt30 mb20 post-title" id="answers-title">8 个回答</h2>
+<article class="clearfix widget-answers__item" id="a-1020000004223154">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004223154" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">4</span>
+<button class="hate" data-do="hate" data-id="1020000004223154" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/law">
+<img alt="" class="avatar-24" src="http://static.segmentfault.com/v-56810165/global/img/user-64.png"/>
+</a>
+<strong><a class="mr5" href="/u/law">law</a> 361
+            </strong>
+<span class="ml10 text-muted">
+            23 小时前 回答
+                            · <a href="/q/1010000004221774/a-1020000004223154/revision">23 小时前 更新</a>
+</span>
+<div class="answer fmt mt10">
+<p>这个问题下的好多答案，都跑偏了，怒答一记！<br/>题主其实只有2个问题要问：<br/><strong>后期学习方向，各位能给点建议吗？</strong><br/>当然是js模块化这方面的知识，前提是要把js的基础打好，怎么打？<br/>高程3多看几遍，api都记清楚，也可以去这个网站做笔记：<a href="https://developer.mozilla.org/zh-CN/docs/Web">https://developer.mozilla.org/zh-CN/docs/Web</a>  （不翻墙，应该也可以去看）<br/>利用印象笔记，有道云笔记什么的，pc上，手机上都下载下来，看到好的文章，不熟的api的时候就记下来，多看多练～<br/><strong>先把基础打好，到时候那些框架什么的，一个星期上手一个不是问题</strong><br/><strong>不要为了使用框架，去使用框架，不要盲目跟风，现在的前端喜欢跟风的太多，太浮躁了！！！</strong></p>
+<p><strong>如果使用框架会带来工作流程的哪些变化？以及现阶段是否必要引入前端框架？</strong><br/>这是题主的第二个问题。<br/>工作流程的变化，鉴于你前边也说了，你们现在的合作方式，是后端套前端写好的页面。<br/>这快的话，不会有什么变化，用了框架，只会添乱罢了。<br/>使用框架，要根据项目的适用情况，来定，<br/>绝大部分情况下，中小型项目用jquery就可以搞定的，在说一遍，不要盲目跟风，打好基础再说。<br/>你看到那些大牛，小牛，这框架那框架讨论的热乎，纯粹是因为他们在的地方不是你现在的那种小作坊。<br/>框架的使用的话，最好还是有个人来带你一下，鉴于题主，你也说了自己刚入门，更加不建议你去弄那些框架。<br/>当然我并不是说，不让你去学习框架，你可以去学习，但是可能不适合你自己直接拿去做项目。</p>
+<p>真的是怒答啊，因为我刚入行时跟你的情况也差不多，看到这么多跑偏的人，实在忍不住了。<br/>最后在说两句，你想了解后端的交互？<br/>可能所有刚入行的前端，都这样想，完全不晓得后端是怎么个流程，觉得自己写页面弱爆了云云。<br/>其实现在大部分公司，都是前后端分离，后端给接口，前端拿到接口，好吧，我在说简单一点，用ajax读取接口拿到数据用jquery进行dom操作，把数据填充到你写的html上，如此而已。<br/>所以现阶段，不需要你去熟悉后端的开发流程什么的，现在不是你学习后端语言的时候。<br/>重要的事情说3遍：<br/>打好基础，打好基础，第三遍你在心理默念吧。</p>
+<p>这个问题还是有不少新人在关注的，<br/>在贴一个别人的博客里的一篇文章，希望对大家有好处：<br/><a href="http://www.admin10000.com/document/6839.html">http://www.admin10000.com/document/6839.html</a></p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004221774/a-1020000004223154">链接</a></li>
+<li><a class="comments" data-id="1020000004223154" data-target="#comment-1020000004223154" href="javascript:void(0);">7
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004223154" id="comment-1020000004223154">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004222537">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004222537" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">2</span>
+<button class="hate" data-do="hate" data-id="1020000004222537" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/horve">
+<img alt="" class="avatar-24" src="http://sfault-avatar.b0.upaiyun.com/557/489/557489654-55f909dc6c704_big64"/>
+</a>
+<strong><a class="mr5" href="/u/horve">Horve大叔</a> 389
+            </strong>
+<span class="ml10 text-muted">
+            1 天前 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>自己学一下nodejs，搭个服务器，前后端自己系统地了解一下，对前端开发的概念会更清晰，然后自己捣鼓一些小项目，也可以积累一些经验</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004221774/a-1020000004222537">链接</a></li>
+<li><a class="comments" data-id="1020000004222537" data-target="#comment-1020000004222537" href="javascript:void(0);">
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004222537" id="comment-1020000004222537">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004222701">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004222701" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">1</span>
+<button class="hate" data-do="hate" data-id="1020000004222701" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/BrickYang">
+<img alt="" class="avatar-24" src="http://static.segmentfault.com/v-56810165/global/img/user-64.png"/>
+</a>
+<strong><a class="mr5" href="/u/BrickYang">BrickYang</a> 133
+            </strong>
+<span class="ml10 text-muted">
+            1 天前 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>既然还要考虑老板喜欢高大上的需求，建议你自学 Node.js 和 React，跟后端说好把 API 定好，剩下的他们只管处理数据就行了。然后你可以跟老板说一大堆前后端分离，前端工程化等等他听不懂的东西，你们老板也只能说：你搞的这个东西啊，Exciting。</p>
+<p>而且估计未来一段时间你们公司除了你没人能维护前端</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004221774/a-1020000004222701">链接</a></li>
+<li><a class="comments" data-id="1020000004222701" data-target="#comment-1020000004222701" href="javascript:void(0);">2
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004222701" id="comment-1020000004222701">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004222905">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004222905" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">1</span>
+<button class="hate" data-do="hate" data-id="1020000004222905" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/benlingxiao">
+<img alt="" class="avatar-24" src="http://sfault-avatar.b0.upaiyun.com/211/398/2113988747-561f21278a679_big64"/>
+</a>
+<strong><a class="mr5" href="/u/benlingxiao">假装文艺</a> 104
+            </strong>
+<span class="ml10 text-muted">
+            1 天前 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>题主的这种情况，如果你比较想提高自己的话，可以把交互那一部分接过来做，不过3比1的前后端比例确实会很累，特别涉及到一些比较复杂的业务的时候。而且很蛋疼的地方就是，后端们写js的时候跟前端完全不在一个频道上，出了问题很难维护。</p>
+<p>框架这一方面，毕竟只是一种工具，只要能方便快捷高效的开发，用不用都可以。我想老板的意思应该是让你先用框架，了解框架的思想，后面能自己根据这种思想，针对性的封装自己的模块才是最重要的。就像你说的bootstrap，你如果对整站的响应式，风格样式以及各种交互性动作都有自己的设计想法，完全可以试着自己去实现。我认为，框架也只是在你没有思路解决问题或者懒得去封装模块的时候，便捷的提供给你解决方案。</p>
+<p>我公司的项目目前的架构:<br/>1.页面展示（bootstrap）<br/>2.数据渲染（angular）<br/>3.模块化管理（seajs）<br/>至于压缩打包我现在还没有去研究。<br/>一句话：只要你够牛，3个后端也是你辅助角色，加油！<br/><img data-src="/img/ctPhPL"/></p>
+<p>---form <a href="https://github.com/benlingxiao/fks">https://github.com/benlingxiao/fks</a></p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004221774/a-1020000004222905">链接</a></li>
+<li><a class="comments" data-id="1020000004222905" data-target="#comment-1020000004222905" href="javascript:void(0);">5
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004222905" id="comment-1020000004222905">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004223116">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004223116" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">1</span>
+<button class="hate" data-do="hate" data-id="1020000004223116" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/bunm_jyo">
+<img alt="" class="avatar-24" src="http://sfault-avatar.b0.upaiyun.com/304/395/3043952946-56833d495b998_big64"/>
+</a>
+<strong><a class="mr5" href="/u/bunm_jyo">Bunm_Jyo</a> 150
+            </strong>
+<span class="ml10 text-muted">
+            23 小时前 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>老板都来管框架了啊?这公司发展前景堪忧啊</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004221774/a-1020000004223116">链接</a></li>
+<li><a class="comments" data-id="1020000004223116" data-target="#comment-1020000004223116" href="javascript:void(0);">
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004223116" id="comment-1020000004223116">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004221851">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004221851" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">0</span>
+<button class="hate" data-do="hate" data-id="1020000004221851" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/jarvan">
+<img alt="" class="avatar-24" src="http://sfault-avatar.b0.upaiyun.com/212/207/2122078601-56757438bc96d_big64"/>
+</a>
+<strong><a class="mr5" href="/u/jarvan">杨川宝</a> 299
+            </strong>
+<span class="ml10 text-muted">
+            1 天前 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>对你自身发展来说建议用框架。容易提高自己。但是对于项目来说三个后端。。到时候你会忙死。。项目进展可能会收影响。。</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004221774/a-1020000004221851">链接</a></li>
+<li><a class="comments" data-id="1020000004221851" data-target="#comment-1020000004221851" href="javascript:void(0);">
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004221851" id="comment-1020000004221851">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004222504">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004222504" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">0</span>
+<button class="hate" data-do="hate" data-id="1020000004222504" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/hei_yu_fa">
+<img alt="" class="avatar-24" src="http://static.segmentfault.com/v-56810165/global/img/user-64.png"/>
+</a>
+<strong><a class="mr5" href="/u/hei_yu_fa">hei_yu_fa</a> 289
+            </strong>
+<span class="ml10 text-muted">
+            1 天前 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>楼主，我目前的处境跟你差不多，我坐等更多答案指路，我之前面试的时候有一个面试官告诉我不要急着去搞什么框架，把原生的JS搞个透彻什么框架都会了，当然这他肯定是在学习上给的建议，真正在开发中，可以快速解决肯定最好，我在这个上面也找不到门路，坐等大牛指路</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004221774/a-1020000004222504">链接</a></li>
+<li><a class="comments" data-id="1020000004222504" data-target="#comment-1020000004222504" href="javascript:void(0);">
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004222504" id="comment-1020000004222504">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004221967">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004221967" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">-1</span>
+<button class="hate" data-do="hate" data-id="1020000004221967" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/gabuandfeifei">
+<img alt="" class="avatar-24" src="http://static.segmentfault.com/v-56810165/global/img/user-64.png"/>
+</a>
+<strong><a class="mr5" href="/u/gabuandfeifei">嘎布and肥肥</a> 127
+            </strong>
+<span class="ml10 text-muted">
+            1 天前 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>说句不好听的，你做的还是比较偏向于设计师的事情、真正的前端，自己架个测试小服务器，放些后端给过来的数据格式json什么的，其他的就都是你的工作了，包括所谓的套页面。</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004221774/a-1020000004221967">链接</a></li>
+<li><a class="comments" data-id="1020000004221967" data-target="#comment-1020000004221967" href="javascript:void(0);">1
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004221967" id="comment-1020000004221967">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<div class="text-center">
+</div>
+</div><!-- /.widget-answers -->
+<h4>撰写答案</h4>
+<input id="draftId" type="hidden" value=""/>
+<input id="questionId" type="hidden" value="1010000004221774"/>
+<form action="/question/1010000004221774/answers/add" class="editor-wrap" method="post">
+<div class="editor" id="questionText">
+<textarea class="form-control" id="answerEditor" name="text" placeholder="撰写答案..." rows="4"></textarea>
+</div>
+<div class="hide mt15 clearfix" id="answerSubmit">
+<div class="checkbox pull-left">
+<label><input class="" id="shareToWeibo" type="checkbox"/>
+                            同步到新浪微博</label>
+</div>
+<div class="pull-right">
+<span class="hidden text-muted" id="editorStatus">
+</span>
+<a class="mr10 hidden" href="javascript:void(0);" id="dropIt">
+                            [舍弃]
+                        </a>
+<button class="btn btn-lg btn-primary ml20" data-id="1010000004221774" id="answerIt" type="submit">提交回答
+                        </button>
+</div>
+</div>
+</form>
+</div>
+<!-- /.main -->
+<div class="col-xs-12 col-md-3 side">
+<div class="sfad-sidebar">
+<div class="sfad-item" data-adn="ad-981179" id="adid-981179">
+<button aria-hidden="true" class="close" type="button">×</button>
+</div>
+</div>
+<div class="widget-box no-border">
+<h2 class="h4 widget-box__title">相似问题</h2>
+<ul class="widget-links list-unstyled">
+<li class="widget-links__item"><a href="/q/1010000004025164" title="仅前端代码使用CoffeeScript的web工程开发流程">仅前端代码使用CoffeeScript的web工程开发流程</a>
+<small class="text-muted">
+                                                    2 回答
+                                                                             |                             已解决
+                                            </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000000662047" title="为了缩减页面，大家做移动web前端开发时用什么库和框架？">为了缩减页面，大家做移动web前端开发时用什么库和框架？</a>
+<small class="text-muted">
+                                                    15 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000000520878" title="移动端web前端开发入门。">移动端web前端开发入门。</a>
+<small class="text-muted">
+                                                    4 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000000346902" title="关于web前端开发~该怎么去学 差不多小白吧~">关于web前端开发~该怎么去学 差不多小白吧~</a>
+<small class="text-muted">
+                                                    1 回答
+                                                                             |                             已解决
+                                            </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000003003475" title="web开发框架">web开发框架</a>
+<small class="text-muted">
+                                                    7 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000002869657" title="安卓工程师转做前端，有什么好的框架推荐？">安卓工程师转做前端，有什么好的框架推荐？</a>
+<small class="text-muted">
+                                                    3 回答
+                                                                             |                             已解决
+                                            </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000004200612" title="web前端开发纯走接口模式 如何避免冗余代码和游览友好？">web前端开发纯走接口模式 如何避免冗余代码和游览友好？</a>
+<small class="text-muted">
+                                                    6 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000003063810" title="求推荐书籍,技术栈为web前端,ios前端,node后端">求推荐书籍,技术栈为web前端,ios前端,node后端</a>
+<small class="text-muted">
+                                                    3 回答
+                                                                             |                             已解决
+                                            </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000003830319" title="如何组织前端javascript代码">如何组织前端javascript代码</a>
+<small class="text-muted">
+                                                    5 回答
+                                                                             |                             已解决
+                                            </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000003738543" title="web前端学习路线，求指导">web前端学习路线，求指导</a>
+<small class="text-muted">
+                                                    4 回答
+                                                                             |                             已解决
+                                            </small>
+</li>
+</ul>
+</div>
+<div class="widget-share__full" data-shorturl="http://sfau.lt/bNrSri" data-text="如果要用前端框架，开发流程是怎样的？" data-url="http://segmentfault.com/q/1010000004221774"></div>
+</div><!-- /.side -->
+</div>
+</div>
+</div>
+<div class="modal" id="shareToWeiboModal">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" data-dismiss="modal" type="button">
+<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+</button>
+<h4 class="modal-title">分享</h4>
+</div>
+<div class="modal-body">
+<p class="sfModal-content">
+                    分享到微博？
+                </p>
+</div>
+<div class="modal-footer ">
+<button class="btn btn-default dont-likeweibo" data-dismiss="modal" type="button">取消并且不再弹出</button>
+<a class="btn btn-primary done-btn" href="" id="shareLink" onclick="$('#shareToWeiboModal').modal('hide')" target="_blank">分享</a>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden widget-register widget-welcome-question mt20 hidden-xs widget-welcome widget-register-slideUp">
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<h2 class="title h4">与我们一起探索更多的未知</h2>
+<p>专业的开发者技术社区，为用户提供多样化的线上知识交流，丰富的线下活动及给力的工作机会</p>
+</div>
+<form action="/api/user/register/fast" method="post">
+<div class="col-sm-5">
+<div class="form-group mb0">
+<input class="form-control" name="mail" placeholder="邮箱地址" required="" type="text"/>
+</div>
+</div>
+<div class="col-sm-3">
+<button class="btn btn-primary btn-block" type="submit">加入只需一步</button>
+</div>
+<div class="col-sm-10 mt10 captcha-part" style="display:none;">
+<div class="row">
+<div class="col-sm-4 pr0">
+<input class="form-control" disabled="" name="captcha" placeholder="请输入验证码" required="" type="text"/>
+</div>
+<div class="col-sm-4 pr0">
+<a href="javascript:void(0)"><img height="35" src=""/></a>
+</div>
+</div>
+</div>
+</form>
+<a class="close" href="javascript:void(0);"><span>×</span></a>
+</div>
+</div>
+</div>
+<div class="modal widget-911" id="delete-modal">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+<h4 class="modal-title radio-del question-close-only">关闭<span class="type-911">问题</span>（请谨慎操作）</h4>
+<h4 class="modal-title radio-del question-delete-only">删除<span class="type-911">问题</span>（请谨慎操作）</h4>
+<h4 class="modal-title radio-del answer-delete-only">删除<span class="type-911">回答</span>（请谨慎操作）</h4>
+<h4 class="modal-title radio-del answer-ignore-only">忽略<span class="type-911">回答</span></h4>
+</div>
+<div class="modal-body">
+<p>
+<strong class="required radio-del question-close-only">关闭理由：</strong>
+<strong class="required radio-del question-delete-only answer-delete-only">删除理由：</strong>
+<strong class="required radio-del answer-ignore-only">忽略理由：</strong>
+</p>
+<div id="reportDescription">
+<div class="radio-del radio all">
+<label>
+<input name="descRadio" type="radio" value="推广（招聘、广告、SEO 等）方面的内容"/>
+                            推广（招聘、广告、SEO 等）方面的内容
+                        </label>
+</div>
+<div class="radio-del radio question-close-only">
+<label>
+<input name="descRadio" type="radio" value="与已有问题重复"/>
+                            与已有问题重复（请编辑该提问指向已有相同问题）
+                        </label>
+</div>
+<div class="radio-del radio answer-ignore-only">
+<label>
+<input name="descRadio" type="radio" value="答非所问，不符合答题要求"/>
+                            答非所问，不符合答题要求
+                        </label>
+</div>
+<div class="radio-del radio answer-ignore-only">
+<label>
+<input name="descRadio" type="radio" value="宜作评论而非答案"/>
+                            宜作评论而非答案
+                        </label>
+</div>
+<div class="radio-del radio all">
+<label>
+<input name="descRadio" type="radio" value="带有人身攻击、辱骂、仇恨等违反条款的内容"/>
+                            带有人身攻击、辱骂、仇恨等违反条款的内容
+                        </label>
+</div>
+<div class="radio-del radio question-close-only">
+<label>
+<input name="descRadio" type="radio" value="无法获得确切结果的问题"/>
+                            无法获得确切结果的问题
+                        </label>
+</div>
+<div class="radio-del radio question-close-only">
+<label>
+<input name="descRadio" type="radio" value="非开发直接相关的问题"/>
+                            非开发直接相关的问题
+                        </label>
+</div>
+<div class="radio-del radio question-close-only question-delete-only">
+<label>
+<input name="descRadio" type="radio" value="非技术提问的讨论型问题"/>
+                            非技术提问的讨论型问题
+                        </label>
+</div>
+<div class="radio-del radio all btwRadio">
+<label>
+<input name="descRadio" type="radio" value=""/>
+                            其他原因（请补充说明）
+                        </label>
+</div>
+<div class="btw" style="display:none;">
+<p class="mt20"><strong>补充说明：</strong></p>
+<textarea class="form-control" id="deleteDesc" name="description" rows="3"></textarea>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-default" data-dismiss="modal" type="button">取消</button>
+<button class="btn btn-danger" id="submit-delete" type="button">提交</button>
+</div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="modal widget-911" id="911">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" data-dismiss="modal" type="button">
+<span aria-hidden="true">×</span>
+<span class="sr-only">Close</span>
+</button>
+<h4 class="modal-title">举报<span data-model="type"></span></h4>
+</div>
+<div class="modal-body">
+<form id="reportForm">
+<!-- 后台返回信息 -->
+<p class="alert alert-warning" data-model="returnMsg"></p>
+<div data-role="base">
+<p>
+<strong class="required">我要举报该<span data-model="type"></span>，理由是：</strong>
+</p>
+<ul class="list-unstyled" data-model="list"></ul>
+</div>
+</form>
+</div>
+<div class="modal-footer">
+<button class="btn btn-default pull-left" data-role="back" style="display:none" type="button">返回重选</button>
+<button class="btn btn-default" data-dismiss="modal" type="button">取消</button>
+<button class="btn btn-primary" data-role="submit" type="button">提交</button>
+</div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<footer id="footer">
+<div class="container">
+<div class="row hidden-xs">
+<dl class="col-sm-2 site-link">
+<dt>网站相关</dt>
+<dd><a href="/about">关于我们</a></dd>
+<dd><a href="/tos">服务条款</a></dd>
+<dd><a href="/faq">帮助中心</a></dd>
+<dd><a href="/repu">声望与权限</a></dd>
+<dd><a href="/markdown">编辑器语法</a></dd>
+<dd><a href="//weekly.segmentfault.com/">每周精选</a></dd>
+<dd><a href="/app">App 下载</a></dd>
+</dl>
+<dl class="col-sm-2 site-link">
+<dt>联系合作</dt>
+<dd><a href="/contact">联系我们</a></dd>
+<dd><a href="/hiring">加入我们</a></dd>
+<dd><a href="/link">合作伙伴</a></dd>
+<dd><a href="/press">媒体报道</a></dd>
+<dd><a href="/0x">建议反馈</a></dd>
+<dd><a href="http://pan.baidu.com/share/link?shareid=604288&amp;uk=839272106" target="_blank">Logo 下载</a>
+</dd>
+</dl>
+<dl class="col-sm-2 site-link">
+<dt>常用链接</dt>
+<dd><a href="https://chrome.google.com/webstore/detail/segmentfault-%E7%AC%94%E8%AE%B0/pjklfdmleagfaekibdccmhlhellefcfo" target="_blank">笔记插件: Chrome</a></dd>
+<dd><a href="https://addons.mozilla.org/zh-CN/firefox/addon/sf-note-ext/" target="_blank">笔记插件: Firefox</a></dd>
+<dd><a href="//mirrors.segmentfault.com/" target="_blank">文档镜像</a></dd>
+<dd>订阅：<a href="/feeds">问答</a> / <a href="/feeds/blogs">文章</a></dd>
+<dd><a href="/hackathon">黑客马拉松</a></dd>
+<dd><a href="/giveaways" target="_blank">开发者福利</a></dd>
+<!--             <dd><a href="http://zs.segmentfault.com/" target="_blank">一起涨姿势</a></dd> -->
+<dd><a href="https://namebeta.com/" target="_blank">域名搜索注册</a></dd>
+</dl>
+<dl class="col-sm-2 site-link">
+<dt>关注我们</dt>
+<dd><a href="https://github.com/SegmentFault" target="_blank">GitHub</a></dd>
+<dd><a href="https://twitter.com/segment_fault" target="_blank">Twitter</a></dd>
+<!-- <dd><a href="http://page.renren.com/699146294" target="_blank">人人网</a></dd> -->
+<dd><a href="https://www.linkedin.com/company/segmentfault" target="_blank">LinkedIn</a></dd>
+<dd><a href="http://weibo.com/segmentfault" target="_blank">新浪微博</a></dd>
+<dd><a href="http://i.youku.com/segmentfault" target="_blank">优酷主页</a></dd>
+<dd><a href="/blog/segmentfault" target="_blank">开发日志</a></dd>
+</dl>
+<dl class="col-sm-4 site-link" id="license">
+<dt>内容许可</dt>
+<dd>除特别说明外，用户内容均采用 <a href="http://creativecommons.org/licenses/by-sa/3.0/cn/" rel="license" target="_blank">知识共享署名-相同方式共享 3.0
+                        中国大陆许可协议</a> 进行许可
+                </dd>
+<dd>本站由 <a href="http://qingcloud.com/" target="_blank">青云 QingCloud</a> 提供云计算服务<br/><a href="https://www.upyun.com/?utm_source=segmentfault&amp;utm_medium=link&amp;utm_campaign=upyun&amp;md=segmentfault" target="_blank">又拍云</a>
+                    提供 CDN 存储服务
+                </dd>
+<dd>
+<a href="http://www.anquan.org" key="55e59bd4efbfb0241247d4e4" logo_size="124x47" logo_type="realname">
+<script src="//static.anquan.org/static/outer/js/aq_auth.js"></script>
+</a>
+<!-- Begin DigiCert site seal HTML and JavaScript -->
+<div data-language="en" id="DigiCertClickID_2bMgZTfe" style="float: left; margin-right: 10px"></div>
+<script type="text/javascript">
+                        var __dcid = __dcid || [];
+                        __dcid.push(["DigiCertClickID_2bMgZTfe", "3", "s", "black", "2bMgZTfe"]);
+                        (function () {
+                            var cid   = document.createElement("script");
+                            cid.async = true;
+                            cid.src   = "//seal.digicert.com/seals/cascade/seal.min.js";
+                            var s     = document.getElementsByTagName("script");
+                            var ls    = s[(s.length - 1)];
+                            ls.parentNode.insertBefore(cid, ls.nextSibling);
+                        }());
+                    </script>
+<!-- End DigiCert site seal HTML and JavaScript -->
+</dd>
+</dl>
+</div>
+<div class="copyright">
+            Copyright © 2011-2015 SegmentFault. 当前呈现版本 15.12.09<br/><a href="http://www.miibeian.gov.cn/" rel="nofollow">浙ICP备15005796号-2</a>
+</div>
+<p class="text-center">
+<a class="js__view--selector hidden-sm hidden-md hidden-lg" data-action="mobile" href="javascript:;">移动版</a>
+<a class="js__view--selector hidden-sm hidden-md hidden-lg" data-action="desktop" href="javascript:;">桌面版</a>
+</p>
+</div>
+</footer>
+<div class="hidden-xs hidden-sm" id="fixedTools">
+<a class="hidden border-bottom" href="#" id="backtop">回顶部</a>
+<div class="qrcodeWraper">
+<a href="/app#qrcode"><span class="glyphicon glyphicon-qrcode"></span></a>
+<img alt="sf-wechat" class="border" id="qrcode" src="http://static.segmentfault.com/v-56810165/page/img/app/appQrcode.png"/>
+<p class="qrcode-text">扫扫下载 App</p>
+</div>
+</div>
+<div class="app-promotion-bar">
+<a href="javascript:;"><i class="fa fa-close close"></i></a>
+<div class="icon"></div>
+<h5 class="title h5">SegmentFault</h5>
+<p class="describe">一起探索更多未知</p>
+<a class="download-btn btn btn-sm btn-primary" href="/app#qrcode">下载 App</a>
+</div>
+<script id="loginModal" type="text/template">
+<div class="row bg-white login-modal">
+    <div class="col-md-4 col-sm-12 col-md-push-7 login-wrap">
+        <h1 class="h4 text-muted login-title">用户登录</h1>
+        <form action="/api/user/login" method="POST" role="form" class="mt30">
+            <div class="form-group">
+                <label class="control-label">Email</label>
+                <input type="email" class="form-control" name="mail" required placeholder="hello@segmentfault.com">
+            </div>
+            <div class="form-group">
+                <label class="control-label">密码</label>
+                <input type="password" class="form-control" name="password" required placeholder="密码">
+            </div>
+            <div class="form-group clearfix">
+                <div class="checkbox pull-left">
+                    <label><input name="remember" type="checkbox" value="1" checked> 记住登录状态</label>
+                </div>
+                <button type="submit" class="btn btn-primary pull-right pl20 pr20">登录</button>
+            </div>
+        </form>
+        <p class="h4 text-muted visible-xs-block h4">快速登录</p>
+        <div class="widget-login mt30">
+            <p class="text-muted mt5 mr10 pull-left hidden-xs">快速登录</p>
+            <a href="/user/oauth/google" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-google"><span class="icon-sn-google"></span> <strong class="visible-xs-inline">Google 账号</strong></a>
+            <a href="/user/oauth/github" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-github"><span class="icon-sn-github"></span> <strong class="visible-xs-inline">Github 账号</strong></a>
+            <a href="/user/oauth/weibo" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-weibo"><span class="icon-sn-weibo"></span> <strong class="visible-xs-inline">新浪微博账号</strong></a>
+            <a href="/user/oauth/qq" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-qq"><span class="icon-sn-qq"></span> <strong class="visible-xs-inline">QQ 账号</strong></a>
+            <a href="/user/oauth/weixin" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-wechat"><span class="icon-sn-wechat"></span> <strong class="visible-xs-inline">微信账号</strong></a>
+            <button type="button" class="btn mb5 btn-default btn-sm btn-sn-more" id="loginShowMore">...</button>
+            <a href="/user/oauth/twitter" class="btn pl5 pr5 mb5 btn-default btn-sn-twitter btn-sm hidden"><span class="icon-sn-twitter"></span> <strong class="visible-xs-inline">Twitter 账号</strong></a>
+            <a href="/user/oauth/facebook" class="btn pl5 pr5 mb5 btn-default btn-sn-facebook btn-sm hidden"><span class="icon-sn-facebook"></span> <strong class="visible-xs-inline">Facebook 账号</strong></a>
+            <a href="/user/oauth/douban" class="btn pl5 pr5 mb5 btn-default btn-sn-douban btn-sm hidden"><span class="icon-sn-douban"></span> <strong class="visible-xs-inline">豆瓣账号</strong></a>
+        </div>
+    </div>
+    <div class="login-vline hidden-xs hidden-sm"></div>
+    <div class="col-md-4 col-md-pull-3 col-sm-12 login-wrap">
+        <h1 class="h4 text-muted login-title">创建新账号</h1>
+        <form action="/api/user/register" method="POST" role="form" class="mt30">
+            <div class="form-group">
+                <label for="name" class="control-label">用户名</label>
+                <input type="text" class="form-control" name="name" required placeholder="字母、数字等，用户名唯一">
+            </div>
+            <div class="form-group">
+                <label for="mail" class="control-label">Email</label>
+                <input type="hidden" style="display:none" name="mail">
+                <input type="email" autocomplete="off" class="form-control register-mail" name="mail" required placeholder="hello@segmentfault.com">
+            </div>
+            <div class="form-group">
+                <label for="password" class="control-label">密码</label>
+                <input type="password" class="form-control" name="password" required placeholder="不少于 6 位">
+            </div>
+            <div class="form-group" style="display:none;">
+                <label class="required control-label">验证码</label>
+                <input type="text" class="form-control" id="captcha" name="captcha" placeholder="请输入下方的验证码">
+                <div class="mt10"><a id="loginReloadCaptcha"  href="javascript:void(0)"><img data-src="/user/captcha?w=240&h=50" class="captcha" width="240" height="50" /></a></div>
+            </div>
+            <div class="form-group clearfix">
+                <div class="checkbox pull-left">
+                    同意并接受<a href="/tos" target="_blank">《服务条款》</a>
+                </div>
+                <button type="submit" class="btn btn-primary pl20 pr20 pull-right">注册</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="text-center text-muted mt30">
+    <a href="/user/forgot" class="ml5">找回密码</a>
+</div>
+</script>
+<script>
+    (function (w) {
+        w.SF = {
+            staticUrl: "http://static.segmentfault.com/v-56810165"
+        };
+        w.SF.token = (function () {
+    var _blwrw = ''///*'1'*/'1'
++/* 'oH3'//'oH3' */''+'wVi'//'wVi'
++'2'//'Olp'
++//'N'
+'N'+'63e'//'PU'
++//'8MC'
+'8'+'6'//'59'
++//'r'
+'35'+//'G'
+'f'+//'LsM'
+'1'+'0d9'//'uF'
++//'ltH'
+'c'+//'shX'
+'shX'+//'Qu'
+'9ef'+//'1lF'
+'1lF'+//'sRF'
+'b'+/* 'Tw'//'Tw' */''+//'PPI'
+'28'+//'Jk'
+'b'+/* 'Sc'//'Sc' */''+/* 'Lm'//'Lm' */''+'2f'//'v'
++//'fvr'
+'a3f'+''///*'z9A'*/'z9A'
++//'T9A'
+'9a'+'7a'//'84'
++''///*'I2'*/'I2'
++''///*'Ngi'*/'Ngi'
++//'vis'
+'vis'+'c3'//'B3x'
+, _0pVUqJy = [[0,3],[1,2],[14,17],[17,20],[30,33]];
+
+    for (var i = 0; i < _0pVUqJy.length; i ++) {
+        _blwrw = _blwrw.substring(0, _0pVUqJy[i][0]) + _blwrw.substring(_0pVUqJy[i][1]);
+    }
+
+    return _blwrw;
+})();;
+    })(window);
+
+                var lock = {
+        type : "",
+        text : '',
+        table: {"ban_post":[1,"\u4f60\u5df2\u7ecf\u88ab\u7981\u8a00, \u65e0\u6cd5\u8fdb\u884c\u6b64\u64cd\u4f5c, \u5982\u6709\u7591\u4e49\u8bf7\u63d0\u4ea4\u7533\u8bc9, \u6216\u8005\u53d1\u90ae\u4ef6\u5230pr@segmentfault.com"]}
+    };
+</script>
+<script crossorigin="" src="http://static.segmentfault.com/v-56810165/3rd/assets.js"></script>
+<script crossorigin="" src="http://static.segmentfault.com/v-56810165/qa/js/question.js"></script>
+<script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-918487-8']);
+    _gaq.push(['_trackPageview']);
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src   = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-918487-8', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?e23800c454aa573c0ccb16b52665ac26";
+        var s  = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script src="//cbjs.baidu.com/js/m.js"></script>
+<script>
+    if (typeof BAIDU_CLB_fillSlotAsync === 'function') {
+                BAIDU_CLB_fillSlotAsync('981183', 'adid-981183');
+                BAIDU_CLB_fillSlotAsync('981184', 'adid-981184');
+                BAIDU_CLB_fillSlotAsync('981694', 'adid-981694');
+                BAIDU_CLB_fillSlotAsync('981179', 'adid-981179');
+                BAIDU_CLB_fillSlotAsync('1119908', 'adid-1119908');
+            }
+</script>
+</body>
+</html>

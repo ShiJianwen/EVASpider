@@ -1,0 +1,864 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="webkit" name="renderer"/>
+<meta content="15317273575564615446375" property="qc:admins"/>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+<meta content="LkzCRJ7rPEUwt6fVey2vhxiw1vQ" name="alexaVerifyID"/>
+<meta content="app-id=958101793, app-argument=" name="apple-itunes-app"/>
+<title>Android Studio 看不到 Service 的logcat - SegmentFault</title>
+<meta content="{代码...} 运行后看不到任何以“TestService”为 TAG 的日志输出。搜索“TestService”后只看到下面这两句： {代码...} 但是单步调试却能跟着Binder进入到 foo()语句中。以及，系统的应用管理中依旧能看到TestService..." name="description"/>
+<meta content="android logcat" name="keywords"/>
+<link href="/opensearch.xml" rel="search" title="SegmentFault" type="application/opensearchdescription+xml"/>
+<link href="http://static.segmentfault.com/v-56810165/global/img/favicon.ico" rel="shortcut icon"/>
+<link href="http://static.segmentfault.com/v-56810165/global/img/touch-icon.png" rel="apple-touch-icon"/>
+<meta content="#009a61" name="msapplication-TileColor"/>
+<meta content="http://static.segmentfault.com/v-56810165/global/img/touch-icon.png" name="msapplication-square150x150logo"/>
+<meta id="SFUserId" name="userId" value=""/>
+<meta id="SFUserRank" name="userRank" value=""/>
+<link href="/feeds/questions" rel="alternate" title="SegmentFault 最新问题" type="application/atom+xml"/>
+<link href="/feeds/blogs" rel="alternate" title="SegmentFault 最新文章" type="application/atom+xml"/>
+<link href="http://static.segmentfault.com/v-56810165/global/css/global.css" rel="stylesheet"/>
+<link href="http://static.segmentfault.com/v-56810165/qa/css/qa_all.css" rel="stylesheet"/>
+<link href="http://static.segmentfault.com/v-56810165/global/css/responsive.css" rel="stylesheet"/>
+<!--[if lt IE 9]>
+    <link rel="stylesheet" href="http://static.segmentfault.com/v-56810165/global/css/ie.css"/>
+    <script src="http://static.segmentfault.com/v-56810165/global/js/html5shiv.js"></script>
+    <script src="http://static.segmentfault.com/v-56810165/global/js/respond.js"></script>
+    <![endif]-->
+<script src="http://static.segmentfault.com/v-56810165/global/js/debug.js"></script>
+</head>
+<body class="qa-question">
+<!--[if lt IE 9]>
+<div class="alert alert-danger topframe" role="alert">你的浏览器实在<strong>太太太太太太旧了</strong>，放学别走，升级完浏览器再说 <a target="_blank"
+                                                                                                        class="alert-link"
+                                                                                                        href="http://browsehappy.com">立即升级</a>
+</div>
+<![endif]-->
+<div class="global-nav" xmlns="http://www.w3.org/1999/html">
+<nav class="container nav">
+<div class="dropdown m-menu">
+<a aria-expanded="false" aria-haspopup="true" class="visible-xs-block m-toptools" data-toggle="dropdown" href="javascript:void(0);" id="dLabel">
+<span class="glyphicon glyphicon-align-justify"></span>
+<span class="mobile-menu__unreadpoint"></span>
+</a>
+<ul aria-labelledby="dLabel" class="dropdown-menu" role="menu">
+<li class="mobile-menu__item"><a href="/questions/newest">问答</a></li>
+<li class="mobile-menu__item"><a href="/blogs">文章</a></li>
+<li class="mobile-menu__item"><a href="/notes">笔记</a></li>
+<li class="mobile-menu__item"><a href="/jobs">职位</a></li>
+<li class="mobile-menu__item"><a href="/events">活动</a></li>
+<li class="mobile-menu__item"><a href="/tags">标签</a></li>
+<li class="mobile-menu__item"><a href="/users">榜单</a></li>
+<li class="mobile-menu__item"><a href="/sites">子站</a></li>
+</ul>
+</div>
+<h1 class="logo"><a class="sf" href="/">SegmentFault</a></h1>
+<a class="visible-xs-block pull-right m-ask m-toptools" href="/user/login"><span class="glyphicon glyphicon-log-in"></span></a>
+<form action="/search" class="header-search pull-left hidden-sm hidden-xs">
+<button class="btn btn-link">
+<span class="sr-only">搜索</span>
+<span class="glyphicon glyphicon-search"></span>
+</button>
+<input class="form-control" id="searchBox" name="q" placeholder="输入关键字搜索" type="text" value=""/>
+</form>
+<ul class="menu list-inline pull-left hidden-xs">
+<li class="menu__item"><a href="/questions">问答</a></li>
+<li class="menu__item"><a href="/blogs">文章</a></li>
+<li class="menu__item"><a href="/notes">笔记</a></li>
+<li class="menu__item"><a href="/jobs">职位</a></li>
+<li class="menu__item dropdown hoverDropdown">
+<a class="more dropdownBtn" data-toggle="dropdown" href="/sites">
+                        ···<span class="sr-only">更多</span>
+</a>
+<ul class="dropdown-menu">
+<li><a href="/events">活动</a></li>
+<li><a href="/users">榜单</a></li>
+<li><a href="/tags">标签</a></li>
+<li><a href="/sites">子站</a></li>
+<li><a href="/app">移动 App</a></li>
+</ul>
+</li>
+</ul>
+<ul class="opts pull-right list-inline hidden-xs">
+<!-- <li class="opts__item">赶快加入吧 <a id="sfLogin" href="/user/login" class="SFLogin em ml10" onClick="_gaq.push(['_trackEvent', 'Button', 'Click', 'Login']);">立即登录</a></li> -->
+<li class="opts__item message has-unread">
+<a href="/tour" target="_blank">
+<span class="sr-only">消息</span>
+<span class="glyphicon glyphicon-envelope" id="messageCount"></span>
+</a>
+</li>
+<li class="opts__item">
+<a class="SFLogin em ml10" href="/user/login" onclick="_gaq.push(['_trackEvent', 'Button', 'Click', 'Login']);">注册 · 登录</a>
+</li>
+</ul>
+</nav>
+</div>
+<div class="wrap">
+<div class="post-topheader">
+<div class="container">
+<div class="row">
+<div class="col-md-9">
+<ol class="breadcrumb">
+<li><a href="/questions/newest">问答</a></li>
+<li class="active">问答详情</li>
+</ol>
+<h1 class="h3 title" data-id="1010000004226348" id="questionTitle"><a href="/q/1010000004226348">Android Studio 看不到 Service 的logcat</a></h1>
+<div class="author">
+<a class="mr5" href="/u/lawrenceching"><img alt="Lac_" class="avatar-24 mr10" src="http://sfault-avatar.b0.upaiyun.com/267/946/2679462026-55a61d5d3fffd_big64"/><strong>Lac_</strong></a>
+<strong class="text-black mr10">150</strong>
+                        17 小时前 提问
+                                                    · <a href="/q/1010000004226348/revision">17 小时前 更新</a>
+</div>
+</div>
+<div class="col-md-3">
+<ul class="widget-action--ver list-unstyled">
+<li>
+<button class="btn btn-success btn-sm" data-do="follow" data-id="1010000004226348" data-placement="right" data-toggle="tooltip" data-type="question" id="sideFollow" title="关注后将获得更新提醒" type="button">关注
+                                </button>
+<strong>5</strong> 关注
+                        </li>
+<li>
+<button class="btn btn-default btn-sm" data-id="1010000004226348" data-type="question" id="sideBookmark" type="button">收藏
+                                </button>
+<strong id="sideBookmarked">0</strong> 收藏，<strong class="no-stress">72</strong> 浏览
+                        </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- end .post-topheader -->
+<div class="container mt30">
+<div class="row">
+<div class="col-xs-12 col-md-9 main">
+<article class="widget-question__item">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1010000004226348" data-placement="top" data-toggle="tooltip" data-type="question" title="问题对人有帮助，内容完整，我也想知道答案" type="button">
+<span class="sr-only">问题对人有帮助，内容完整，我也想知道答案</span>
+</button>
+<span class="count">0</span>
+<button class="hate" data-do="hate" data-id="1010000004226348" data-placement="bottom" data-toggle="tooltip" data-type="question" title="问题没有实际价值，缺少关键内容，没有改进余地" type="button">
+<span class="sr-only">问题没有实际价值，缺少关键内容，没有改进余地</span>
+</button>
+</div>
+<!-- end .widget-vote -->
+</div>
+<div class="post-offset">
+<div class="question fmt">
+<pre><code>public class TestService extends Service {
+    private static final String TAG = "TestService";
+    private TestBinder binder;
+
+    public TestService() {
+        
+        binder = new TestBinder();
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.v(TAG, "onCreate()");
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        Log.v(TAG, "onBind()");
+        return binder;
+    }
+
+    public class TestBinder extends Binder {
+       public void foo(){
+           Log.v(TAG, "TestBinder.foo()");
+       }
+    }
+}</code></pre>
+<p>运行后看不到任何以“TestService”为 TAG 的日志输出。<br/>搜索“TestService”后只看到下面这两句：</p>
+<pre><code>12-30 15:59:22.319 2887-3279/? W/ActivityManager: Scheduling restart of crashed service me.imlc.test/.service.TestService in 1000ms
+12-30 15:59:22.319 2887-3279/? I/ActivityManager:   Force stopping service ServiceRecord{1b7cc5fd u0 me.imlc.test/.service.TestService}</code></pre>
+<p>但是单步调试却能跟着Binder进入到 foo()语句中。<br/>以及，系统的应用管理中依旧能看到TestService还在运行。<br/>请问如何解决这个问题，没有logcat很难追踪程序逻辑~</p>
+</div>
+<ul class="taglist--inline mb20">
+<li class="tagPopup"><a class="tag" data-id="1040000000089658" data-img="http://sfault-avatar.b0.upaiyun.com/752/833/752833330-1040000000089658_medium40" data-original-title="android" data-placement="top" data-toggle="popover" href="/t/android">android</a></li>
+<li class="tagPopup"><a class="tag" data-id="1040000000714244" data-img="" data-original-title="logcat" data-placement="top" data-toggle="popover" href="/t/logcat">logcat</a></li>
+</ul>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004226348">链接</a></li>
+<li><a class="comments" data-id="1010000004226348" data-target="#comment-1010000004226348" href="javascript:void(0);">
+                                            评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1010000004226348" id="comment-1010000004226348">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+<!-- end .post-offset -->
+</article>
+<div class="widget-answers">
+<div class="btn-group pull-right" role="group">
+<a class="btn btn-default btn-xs active" href="/q/1010000004226348#answers-title" id="sortby-rank">默认排序</a>
+<a class="btn btn-default btn-xs" href="?sort=created#answers-title" id="sortby-created">时间排序</a>
+</div>
+<h2 class="title h4 mt30 mb20 post-title" id="answers-title">3 个回答</h2>
+<article class="clearfix widget-answers__item" id="a-1020000004226521">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004226521" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">0</span>
+<button class="hate" data-do="hate" data-id="1020000004226521" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/chuyao">
+<img alt="" class="avatar-24" src="http://static.segmentfault.com/v-56810165/global/img/user-64.png"/>
+</a>
+<strong><a class="mr5" href="/u/chuyao">chuyao</a> 543
+            </strong>
+<span class="ml10 text-muted">
+            17 小时前 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>看起来你的Service存在异常，被force stop了</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004226348/a-1020000004226521">链接</a></li>
+<li><a class="comments" data-id="1020000004226521" data-target="#comment-1020000004226521" href="javascript:void(0);">3
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004226521" id="comment-1020000004226521">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004228209">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004228209" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">0</span>
+<button class="hate" data-do="hate" data-id="1020000004228209" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/754601508">
+<img alt="" class="avatar-24" src="http://static.segmentfault.com/v-56810165/global/img/user-64.png"/>
+</a>
+<strong><a class="mr5" href="/u/754601508">754601508</a> 2
+            </strong>
+<span class="ml10 text-muted">
+            12 小时前 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>🐰<em>- Italic</em></p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004226348/a-1020000004228209">链接</a></li>
+<li><a class="comments" data-id="1020000004228209" data-target="#comment-1020000004228209" href="javascript:void(0);">
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004228209" id="comment-1020000004228209">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<article class="clearfix widget-answers__item" id="a-1020000004228332">
+<div class="post-col">
+<div class="widget-vote">
+<button class="like" data-do="like" data-id="1020000004228332" data-placement="top" data-toggle="tooltip" data-type="answer" title="答案对人有帮助，有参考价值" type="button">
+<span class="sr-only">答案对人有帮助，有参考价值</span>
+</button>
+<span class="count">0</span>
+<button class="hate" data-do="hate" data-id="1020000004228332" data-placement="bottom" data-toggle="tooltip" data-type="answer" title="答案没帮助，是错误的答案，答非所问" type="button">
+<span class="sr-only">答案没帮助，是错误的答案，答非所问</span>
+</button>
+</div>
+</div>
+<div class="post-offset ">
+<a class="" href="/u/yanqd0">
+<img alt="" class="avatar-24" src="http://static.segmentfault.com/v-56810165/global/img/user-64.png"/>
+</a>
+<strong><a class="mr5" href="/u/yanqd0">_匿蟒_</a> 27
+            </strong>
+<span class="ml10 text-muted">
+            11 小时前 回答
+                    </span>
+<div class="answer fmt mt10">
+<p>在Terminal或CMD中，试试这个命令：</p>
+<pre><code class="bash">adb logcat -s TestService</code></pre>
+<p>我总觉得Android Studio的Logger有问题，会丢信息。我通常都是用<code>adb</code>加<code>grep</code>来看实时Log。</p>
+</div>
+<div class="post-opt">
+<ul class="list-inline mb0">
+<li><a href="/q/1010000004226348/a-1020000004228332">链接</a></li>
+<li><a class="comments" data-id="1020000004228332" data-target="#comment-1020000004228332" href="javascript:void(0);">
+                                评论</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">更多<b class="caret"></b></a>
+<ul class="dropdown-menu dropdown-menu-left">
+</ul>
+</li>
+</ul>
+</div>
+<div class="widget-comments hidden" data-id="1020000004228332" id="comment-1020000004228332">
+<div class="widget-comments__form row">
+<div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+</div><!-- /.widget-comments__form -->
+</div><!-- /.widget-comments -->
+</div>
+</article><!-- /article -->
+<div class="text-center">
+</div>
+</div><!-- /.widget-answers -->
+<h4>撰写答案</h4>
+<input id="draftId" type="hidden" value=""/>
+<input id="questionId" type="hidden" value="1010000004226348"/>
+<form action="/question/1010000004226348/answers/add" class="editor-wrap" method="post">
+<div class="editor" id="questionText">
+<textarea class="form-control" id="answerEditor" name="text" placeholder="撰写答案..." rows="4"></textarea>
+</div>
+<div class="hide mt15 clearfix" id="answerSubmit">
+<div class="checkbox pull-left">
+<label><input class="" id="shareToWeibo" type="checkbox"/>
+                            同步到新浪微博</label>
+</div>
+<div class="pull-right">
+<span class="hidden text-muted" id="editorStatus">
+</span>
+<a class="mr10 hidden" href="javascript:void(0);" id="dropIt">
+                            [舍弃]
+                        </a>
+<button class="btn btn-lg btn-primary ml20" data-id="1010000004226348" id="answerIt" type="submit">提交回答
+                        </button>
+</div>
+</div>
+</form>
+</div>
+<!-- /.main -->
+<div class="col-xs-12 col-md-3 side">
+<div class="sfad-sidebar">
+<div class="sfad-item" data-adn="ad-981179" id="adid-981179">
+<button aria-hidden="true" class="close" type="button">×</button>
+</div>
+</div>
+<div class="widget-box no-border">
+<h2 class="h4 widget-box__title">相似问题</h2>
+<ul class="widget-links list-unstyled">
+<li class="widget-links__item"><a href="/q/1010000002877983" title="eclipse android LogCat突然无内容">eclipse android LogCat突然无内容</a>
+<small class="text-muted">
+                                                    3 回答
+                                                                             |                             已解决
+                                            </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000003916205" title="如何在Android的logcat日志里面查看出错的行数">如何在Android的logcat日志里面查看出错的行数</a>
+<small class="text-muted">
+                                                    2 回答
+                                                                             |                             已解决
+                                            </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000003783949" title="android studio 中 android monitor窗口中，把logcat拉出来之后，放不回去了">android studio 中 android monitor窗口中，把logcat拉出来之后，放不回去了</a>
+<small class="text-muted">
+                                                    2 回答
+                                                                             |                             已解决
+                                            </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000000714246" title="Android怎样在logcat中打印开机时间？">Android怎样在logcat中打印开机时间？</a>
+<small class="text-muted">
+                                                    1 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000002653824" title="ubuntu下开发android,设备老是断，logcat经常没有日志">ubuntu下开发android,设备老是断，logcat经常没有日志</a>
+<small class="text-muted">
+                                                    6 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000002899631" title="Android Studio 1.2.2 不能像之前那样选择调试的应用程序在logcat里边显示了么？">Android Studio 1.2.2 不能像之前那样选择调试的应用程序在logcat里边显示了么？</a>
+<small class="text-muted">
+                                                    2 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000000141620" title="Android logCat 里面一直打印GC_EXPLICIT ，界面有反应迟钝的现象。">Android logCat 里面一直打印GC_EXPLICIT ，界面有反应迟钝的现象。</a>
+<small class="text-muted">
+                                                    1 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000000768907" title="Eclipse下，LogCat(deprecated),显示不了内容，或者全部都是Unknown">Eclipse下，LogCat(deprecated),显示不了内容，或者全部都是Unknown</a>
+<small class="text-muted">
+                                                    2 回答
+                                                                             |                             已解决
+                                            </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000000095515" title="Android Crash">Android Crash</a>
+<small class="text-muted">
+                                                    1 回答
+                                                                    </small>
+</li>
+<li class="widget-links__item"><a href="/q/1010000003879837" title="Android后台services">Android后台services</a>
+<small class="text-muted">
+                                                    2 回答
+                                                                    </small>
+</li>
+</ul>
+</div>
+<div class="widget-share__full" data-shorturl="http://sfau.lt/bNrTC4" data-text="Android Studio 看不到 Service 的logcat" data-url="http://segmentfault.com/q/1010000004226348"></div>
+</div><!-- /.side -->
+</div>
+</div>
+</div>
+<div class="modal" id="shareToWeiboModal">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" data-dismiss="modal" type="button">
+<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+</button>
+<h4 class="modal-title">分享</h4>
+</div>
+<div class="modal-body">
+<p class="sfModal-content">
+                    分享到微博？
+                </p>
+</div>
+<div class="modal-footer ">
+<button class="btn btn-default dont-likeweibo" data-dismiss="modal" type="button">取消并且不再弹出</button>
+<a class="btn btn-primary done-btn" href="" id="shareLink" onclick="$('#shareToWeiboModal').modal('hide')" target="_blank">分享</a>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden widget-register widget-welcome-question mt20 hidden-xs widget-welcome widget-register-slideUp">
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<h2 class="title h4">与我们一起探索更多的未知</h2>
+<p>专业的开发者技术社区，为用户提供多样化的线上知识交流，丰富的线下活动及给力的工作机会</p>
+</div>
+<form action="/api/user/register/fast" method="post">
+<div class="col-sm-5">
+<div class="form-group mb0">
+<input class="form-control" name="mail" placeholder="邮箱地址" required="" type="text"/>
+</div>
+</div>
+<div class="col-sm-3">
+<button class="btn btn-primary btn-block" type="submit">加入只需一步</button>
+</div>
+<div class="col-sm-10 mt10 captcha-part" style="display:none;">
+<div class="row">
+<div class="col-sm-4 pr0">
+<input class="form-control" disabled="" name="captcha" placeholder="请输入验证码" required="" type="text"/>
+</div>
+<div class="col-sm-4 pr0">
+<a href="javascript:void(0)"><img height="35" src=""/></a>
+</div>
+</div>
+</div>
+</form>
+<a class="close" href="javascript:void(0);"><span>×</span></a>
+</div>
+</div>
+</div>
+<div class="modal widget-911" id="delete-modal">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+<h4 class="modal-title radio-del question-close-only">关闭<span class="type-911">问题</span>（请谨慎操作）</h4>
+<h4 class="modal-title radio-del question-delete-only">删除<span class="type-911">问题</span>（请谨慎操作）</h4>
+<h4 class="modal-title radio-del answer-delete-only">删除<span class="type-911">回答</span>（请谨慎操作）</h4>
+<h4 class="modal-title radio-del answer-ignore-only">忽略<span class="type-911">回答</span></h4>
+</div>
+<div class="modal-body">
+<p>
+<strong class="required radio-del question-close-only">关闭理由：</strong>
+<strong class="required radio-del question-delete-only answer-delete-only">删除理由：</strong>
+<strong class="required radio-del answer-ignore-only">忽略理由：</strong>
+</p>
+<div id="reportDescription">
+<div class="radio-del radio all">
+<label>
+<input name="descRadio" type="radio" value="推广（招聘、广告、SEO 等）方面的内容"/>
+                            推广（招聘、广告、SEO 等）方面的内容
+                        </label>
+</div>
+<div class="radio-del radio question-close-only">
+<label>
+<input name="descRadio" type="radio" value="与已有问题重复"/>
+                            与已有问题重复（请编辑该提问指向已有相同问题）
+                        </label>
+</div>
+<div class="radio-del radio answer-ignore-only">
+<label>
+<input name="descRadio" type="radio" value="答非所问，不符合答题要求"/>
+                            答非所问，不符合答题要求
+                        </label>
+</div>
+<div class="radio-del radio answer-ignore-only">
+<label>
+<input name="descRadio" type="radio" value="宜作评论而非答案"/>
+                            宜作评论而非答案
+                        </label>
+</div>
+<div class="radio-del radio all">
+<label>
+<input name="descRadio" type="radio" value="带有人身攻击、辱骂、仇恨等违反条款的内容"/>
+                            带有人身攻击、辱骂、仇恨等违反条款的内容
+                        </label>
+</div>
+<div class="radio-del radio question-close-only">
+<label>
+<input name="descRadio" type="radio" value="无法获得确切结果的问题"/>
+                            无法获得确切结果的问题
+                        </label>
+</div>
+<div class="radio-del radio question-close-only">
+<label>
+<input name="descRadio" type="radio" value="非开发直接相关的问题"/>
+                            非开发直接相关的问题
+                        </label>
+</div>
+<div class="radio-del radio question-close-only question-delete-only">
+<label>
+<input name="descRadio" type="radio" value="非技术提问的讨论型问题"/>
+                            非技术提问的讨论型问题
+                        </label>
+</div>
+<div class="radio-del radio all btwRadio">
+<label>
+<input name="descRadio" type="radio" value=""/>
+                            其他原因（请补充说明）
+                        </label>
+</div>
+<div class="btw" style="display:none;">
+<p class="mt20"><strong>补充说明：</strong></p>
+<textarea class="form-control" id="deleteDesc" name="description" rows="3"></textarea>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-default" data-dismiss="modal" type="button">取消</button>
+<button class="btn btn-danger" id="submit-delete" type="button">提交</button>
+</div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="modal widget-911" id="911">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" data-dismiss="modal" type="button">
+<span aria-hidden="true">×</span>
+<span class="sr-only">Close</span>
+</button>
+<h4 class="modal-title">举报<span data-model="type"></span></h4>
+</div>
+<div class="modal-body">
+<form id="reportForm">
+<!-- 后台返回信息 -->
+<p class="alert alert-warning" data-model="returnMsg"></p>
+<div data-role="base">
+<p>
+<strong class="required">我要举报该<span data-model="type"></span>，理由是：</strong>
+</p>
+<ul class="list-unstyled" data-model="list"></ul>
+</div>
+</form>
+</div>
+<div class="modal-footer">
+<button class="btn btn-default pull-left" data-role="back" style="display:none" type="button">返回重选</button>
+<button class="btn btn-default" data-dismiss="modal" type="button">取消</button>
+<button class="btn btn-primary" data-role="submit" type="button">提交</button>
+</div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<footer id="footer">
+<div class="container">
+<div class="row hidden-xs">
+<dl class="col-sm-2 site-link">
+<dt>网站相关</dt>
+<dd><a href="/about">关于我们</a></dd>
+<dd><a href="/tos">服务条款</a></dd>
+<dd><a href="/faq">帮助中心</a></dd>
+<dd><a href="/repu">声望与权限</a></dd>
+<dd><a href="/markdown">编辑器语法</a></dd>
+<dd><a href="//weekly.segmentfault.com/">每周精选</a></dd>
+<dd><a href="/app">App 下载</a></dd>
+</dl>
+<dl class="col-sm-2 site-link">
+<dt>联系合作</dt>
+<dd><a href="/contact">联系我们</a></dd>
+<dd><a href="/hiring">加入我们</a></dd>
+<dd><a href="/link">合作伙伴</a></dd>
+<dd><a href="/press">媒体报道</a></dd>
+<dd><a href="/0x">建议反馈</a></dd>
+<dd><a href="http://pan.baidu.com/share/link?shareid=604288&amp;uk=839272106" target="_blank">Logo 下载</a>
+</dd>
+</dl>
+<dl class="col-sm-2 site-link">
+<dt>常用链接</dt>
+<dd><a href="https://chrome.google.com/webstore/detail/segmentfault-%E7%AC%94%E8%AE%B0/pjklfdmleagfaekibdccmhlhellefcfo" target="_blank">笔记插件: Chrome</a></dd>
+<dd><a href="https://addons.mozilla.org/zh-CN/firefox/addon/sf-note-ext/" target="_blank">笔记插件: Firefox</a></dd>
+<dd><a href="//mirrors.segmentfault.com/" target="_blank">文档镜像</a></dd>
+<dd>订阅：<a href="/feeds">问答</a> / <a href="/feeds/blogs">文章</a></dd>
+<dd><a href="/hackathon">黑客马拉松</a></dd>
+<dd><a href="/giveaways" target="_blank">开发者福利</a></dd>
+<!--             <dd><a href="http://zs.segmentfault.com/" target="_blank">一起涨姿势</a></dd> -->
+<dd><a href="https://namebeta.com/" target="_blank">域名搜索注册</a></dd>
+</dl>
+<dl class="col-sm-2 site-link">
+<dt>关注我们</dt>
+<dd><a href="https://github.com/SegmentFault" target="_blank">GitHub</a></dd>
+<dd><a href="https://twitter.com/segment_fault" target="_blank">Twitter</a></dd>
+<!-- <dd><a href="http://page.renren.com/699146294" target="_blank">人人网</a></dd> -->
+<dd><a href="https://www.linkedin.com/company/segmentfault" target="_blank">LinkedIn</a></dd>
+<dd><a href="http://weibo.com/segmentfault" target="_blank">新浪微博</a></dd>
+<dd><a href="http://i.youku.com/segmentfault" target="_blank">优酷主页</a></dd>
+<dd><a href="/blog/segmentfault" target="_blank">开发日志</a></dd>
+</dl>
+<dl class="col-sm-4 site-link" id="license">
+<dt>内容许可</dt>
+<dd>除特别说明外，用户内容均采用 <a href="http://creativecommons.org/licenses/by-sa/3.0/cn/" rel="license" target="_blank">知识共享署名-相同方式共享 3.0
+                        中国大陆许可协议</a> 进行许可
+                </dd>
+<dd>本站由 <a href="http://qingcloud.com/" target="_blank">青云 QingCloud</a> 提供云计算服务<br/><a href="https://www.upyun.com/?utm_source=segmentfault&amp;utm_medium=link&amp;utm_campaign=upyun&amp;md=segmentfault" target="_blank">又拍云</a>
+                    提供 CDN 存储服务
+                </dd>
+<dd>
+<a href="http://www.anquan.org" key="55e59bd4efbfb0241247d4e4" logo_size="124x47" logo_type="realname">
+<script src="//static.anquan.org/static/outer/js/aq_auth.js"></script>
+</a>
+<!-- Begin DigiCert site seal HTML and JavaScript -->
+<div data-language="en" id="DigiCertClickID_2bMgZTfe" style="float: left; margin-right: 10px"></div>
+<script type="text/javascript">
+                        var __dcid = __dcid || [];
+                        __dcid.push(["DigiCertClickID_2bMgZTfe", "3", "s", "black", "2bMgZTfe"]);
+                        (function () {
+                            var cid   = document.createElement("script");
+                            cid.async = true;
+                            cid.src   = "//seal.digicert.com/seals/cascade/seal.min.js";
+                            var s     = document.getElementsByTagName("script");
+                            var ls    = s[(s.length - 1)];
+                            ls.parentNode.insertBefore(cid, ls.nextSibling);
+                        }());
+                    </script>
+<!-- End DigiCert site seal HTML and JavaScript -->
+</dd>
+</dl>
+</div>
+<div class="copyright">
+            Copyright © 2011-2015 SegmentFault. 当前呈现版本 15.12.09<br/><a href="http://www.miibeian.gov.cn/" rel="nofollow">浙ICP备15005796号-2</a>
+</div>
+<p class="text-center">
+<a class="js__view--selector hidden-sm hidden-md hidden-lg" data-action="mobile" href="javascript:;">移动版</a>
+<a class="js__view--selector hidden-sm hidden-md hidden-lg" data-action="desktop" href="javascript:;">桌面版</a>
+</p>
+</div>
+</footer>
+<div class="hidden-xs hidden-sm" id="fixedTools">
+<a class="hidden border-bottom" href="#" id="backtop">回顶部</a>
+<div class="qrcodeWraper">
+<a href="/app#qrcode"><span class="glyphicon glyphicon-qrcode"></span></a>
+<img alt="sf-wechat" class="border" id="qrcode" src="http://static.segmentfault.com/v-56810165/page/img/app/appQrcode.png"/>
+<p class="qrcode-text">扫扫下载 App</p>
+</div>
+</div>
+<div class="app-promotion-bar">
+<a href="javascript:;"><i class="fa fa-close close"></i></a>
+<div class="icon"></div>
+<h5 class="title h5">SegmentFault</h5>
+<p class="describe">一起探索更多未知</p>
+<a class="download-btn btn btn-sm btn-primary" href="/app#qrcode">下载 App</a>
+</div>
+<script id="loginModal" type="text/template">
+<div class="row bg-white login-modal">
+    <div class="col-md-4 col-sm-12 col-md-push-7 login-wrap">
+        <h1 class="h4 text-muted login-title">用户登录</h1>
+        <form action="/api/user/login" method="POST" role="form" class="mt30">
+            <div class="form-group">
+                <label class="control-label">Email</label>
+                <input type="email" class="form-control" name="mail" required placeholder="hello@segmentfault.com">
+            </div>
+            <div class="form-group">
+                <label class="control-label">密码</label>
+                <input type="password" class="form-control" name="password" required placeholder="密码">
+            </div>
+            <div class="form-group clearfix">
+                <div class="checkbox pull-left">
+                    <label><input name="remember" type="checkbox" value="1" checked> 记住登录状态</label>
+                </div>
+                <button type="submit" class="btn btn-primary pull-right pl20 pr20">登录</button>
+            </div>
+        </form>
+        <p class="h4 text-muted visible-xs-block h4">快速登录</p>
+        <div class="widget-login mt30">
+            <p class="text-muted mt5 mr10 pull-left hidden-xs">快速登录</p>
+            <a href="/user/oauth/google" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-google"><span class="icon-sn-google"></span> <strong class="visible-xs-inline">Google 账号</strong></a>
+            <a href="/user/oauth/github" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-github"><span class="icon-sn-github"></span> <strong class="visible-xs-inline">Github 账号</strong></a>
+            <a href="/user/oauth/weibo" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-weibo"><span class="icon-sn-weibo"></span> <strong class="visible-xs-inline">新浪微博账号</strong></a>
+            <a href="/user/oauth/qq" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-qq"><span class="icon-sn-qq"></span> <strong class="visible-xs-inline">QQ 账号</strong></a>
+            <a href="/user/oauth/weixin" class="btn pl5 pr5 mb5 btn-default btn-sm btn-sn-wechat"><span class="icon-sn-wechat"></span> <strong class="visible-xs-inline">微信账号</strong></a>
+            <button type="button" class="btn mb5 btn-default btn-sm btn-sn-more" id="loginShowMore">...</button>
+            <a href="/user/oauth/twitter" class="btn pl5 pr5 mb5 btn-default btn-sn-twitter btn-sm hidden"><span class="icon-sn-twitter"></span> <strong class="visible-xs-inline">Twitter 账号</strong></a>
+            <a href="/user/oauth/facebook" class="btn pl5 pr5 mb5 btn-default btn-sn-facebook btn-sm hidden"><span class="icon-sn-facebook"></span> <strong class="visible-xs-inline">Facebook 账号</strong></a>
+            <a href="/user/oauth/douban" class="btn pl5 pr5 mb5 btn-default btn-sn-douban btn-sm hidden"><span class="icon-sn-douban"></span> <strong class="visible-xs-inline">豆瓣账号</strong></a>
+        </div>
+    </div>
+    <div class="login-vline hidden-xs hidden-sm"></div>
+    <div class="col-md-4 col-md-pull-3 col-sm-12 login-wrap">
+        <h1 class="h4 text-muted login-title">创建新账号</h1>
+        <form action="/api/user/register" method="POST" role="form" class="mt30">
+            <div class="form-group">
+                <label for="name" class="control-label">用户名</label>
+                <input type="text" class="form-control" name="name" required placeholder="字母、数字等，用户名唯一">
+            </div>
+            <div class="form-group">
+                <label for="mail" class="control-label">Email</label>
+                <input type="hidden" style="display:none" name="mail">
+                <input type="email" autocomplete="off" class="form-control register-mail" name="mail" required placeholder="hello@segmentfault.com">
+            </div>
+            <div class="form-group">
+                <label for="password" class="control-label">密码</label>
+                <input type="password" class="form-control" name="password" required placeholder="不少于 6 位">
+            </div>
+            <div class="form-group" style="display:none;">
+                <label class="required control-label">验证码</label>
+                <input type="text" class="form-control" id="captcha" name="captcha" placeholder="请输入下方的验证码">
+                <div class="mt10"><a id="loginReloadCaptcha"  href="javascript:void(0)"><img data-src="/user/captcha?w=240&h=50" class="captcha" width="240" height="50" /></a></div>
+            </div>
+            <div class="form-group clearfix">
+                <div class="checkbox pull-left">
+                    同意并接受<a href="/tos" target="_blank">《服务条款》</a>
+                </div>
+                <button type="submit" class="btn btn-primary pl20 pr20 pull-right">注册</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="text-center text-muted mt30">
+    <a href="/user/forgot" class="ml5">找回密码</a>
+</div>
+</script>
+<script>
+    (function (w) {
+        w.SF = {
+            staticUrl: "http://static.segmentfault.com/v-56810165"
+        };
+        w.SF.token = (function () {
+    var _HjQmVGZ = //'X4'
+'5'+'d'//'eMJ'
++//'b5P'
+'f61'+'029'//'sqs'
++//'e8i'
+'1d5'+'a3c'//'d'
++/* '5xO'//'5xO' */''+/* '7'//'7' */''+//'NQ'
+'1e0'+//'27T'
+'221'+//'7TJ'
+'7TJ'+//'U'
+'e3b'+//'YP'
+'27'+//'I3'
+'ff2'+'lT'//'lT'
++'c0'//'1A'
++//'mi'
+'d'+//'2'
+'5', _AuD7 = [[20,23],[28,30]];
+
+    for (var i = 0; i < _AuD7.length; i ++) {
+        _HjQmVGZ = _HjQmVGZ.substring(0, _AuD7[i][0]) + _HjQmVGZ.substring(_AuD7[i][1]);
+    }
+
+    return _HjQmVGZ;
+})();;
+    })(window);
+
+                var lock = {
+        type : "",
+        text : '',
+        table: {"ban_post":[1,"\u4f60\u5df2\u7ecf\u88ab\u7981\u8a00, \u65e0\u6cd5\u8fdb\u884c\u6b64\u64cd\u4f5c, \u5982\u6709\u7591\u4e49\u8bf7\u63d0\u4ea4\u7533\u8bc9, \u6216\u8005\u53d1\u90ae\u4ef6\u5230pr@segmentfault.com"]}
+    };
+</script>
+<script crossorigin="" src="http://static.segmentfault.com/v-56810165/3rd/assets.js"></script>
+<script crossorigin="" src="http://static.segmentfault.com/v-56810165/qa/js/question.js"></script>
+<script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-918487-8']);
+    _gaq.push(['_trackPageview']);
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src   = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-918487-8', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?e23800c454aa573c0ccb16b52665ac26";
+        var s  = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script src="//cbjs.baidu.com/js/m.js"></script>
+<script>
+    if (typeof BAIDU_CLB_fillSlotAsync === 'function') {
+                BAIDU_CLB_fillSlotAsync('981183', 'adid-981183');
+                BAIDU_CLB_fillSlotAsync('981184', 'adid-981184');
+                BAIDU_CLB_fillSlotAsync('981694', 'adid-981694');
+                BAIDU_CLB_fillSlotAsync('981179', 'adid-981179');
+                BAIDU_CLB_fillSlotAsync('1119908', 'adid-1119908');
+            }
+</script>
+</body>
+</html>
